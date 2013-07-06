@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:services="http://www.alibaba.com/schema/services"
+	xmlns:fm-conditions="http://www.alibaba.com/schema/services/form/conditions"
+	xmlns:fm-validators="http://www.alibaba.com/schema/services/form/validators"
+	xmlns="http://www.alibaba.com/schema/services/form/validators"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="
+        http://www.alibaba.com/schema/services http://localhost:8080/schema/services.xsd
+        http://www.alibaba.com/schema/services/form/conditions http://localhost:8080/schema/services-form-conditions.xsd
+        http://www.alibaba.com/schema/services/form/validators http://localhost:8080/schema/services-form-validators.xsd
+        http://www.springframework.org/schema/beans http://localhost:8080/schema/www.springframework.org/schema/beans/spring-beans.xsd
+    ">
+
+	<services:form postOnlyByDefault="true">
+		<services:group name="csrfTokenCheckGroup">
+			<services:field name="csrfToken">
+				<csrf-validator>
+					<message>提交的数据已过期</message>
+				</csrf-validator>
+			</services:field>
+		</services:group>
+
+		<!-- 注册 -->
+		<services:group name="register" trimmingByDefault="true" extends="csrfTokenCheckGroup">			<services:field name="email" displayName="Email">
+				<required-validator>
+					<message>必须填写${displayName}</message>
+				</required-validator>
+				<regexp-validator pattern="^(?:\w+\.{1})*\w+@(\w+\.)*\w+$">
+					<message>请填写正确的邮箱地址</message>
+				</regexp-validator>
+				<custom-error id="emailError">
+					<message>${message}</message>
+				</custom-error>
+			</services:field>
+			<services:field name="userName" displayName="用户名">
+				<required-validator>
+					<message>必须填写${displayName}</message>
+				</required-validator>
+				<regexp-validator pattern="^[\u4E00-\u9FA5\uF900-\uFA2Da-zA-Z0-9_]{2,16}$">
+					<message>用户名必须由2-16 个字母，数字，汉字或下划线组成</message>
+				</regexp-validator>
+				<custom-error id="userNameError">
+					<message>${message}</message>
+				</custom-error>
+			</services:field>
+			<services:field name="password" displayName="密码">
+				<required-validator>
+					<message>必须填写${displayName}</message>
+				</required-validator>
+				<string-byte-length-validator minLength="4">
+					<message>密码最少4个字符</message>
+				</string-byte-length-validator>
+			</services:field>
+		</services:group>
+
+	</services:form>
+
+</beans:beans>

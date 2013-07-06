@@ -1,0 +1,32 @@
+<table id="mytab"  border="1" class="t3">  
+  <thead>  
+	<th width="15%">类型</th>
+	<th width="15%">食物</th>
+	<th width="15%">店铺</th>
+	<th width="20%">位置</th>
+	<th width="20%">类别位置</th>
+	<th width="15%">操作</th>
+  </thead>  
+    #foreach($foodSetPromotionDOs in $foodSetPromotionDOsList)
+		#foreach($foodSetPromotionDO in $foodSetPromotionDOs)
+        <tr class="a1">
+			#if(${velocityCount} == 1)
+    		<td rowspan="$foodSetPromotionDOs.size()">$!foodSetPromotionDO.getTypeMessage()</td>
+			#end
+    		<td>$!foodSetPromotionDO.foodDO.name</td> 
+    		<td>$!foodSetPromotionDO.shopDO.name</td> 
+            <td>$!foodSetPromotionDO.indexf[<a href="$!{adminModule}/update.htm?action=food_set_promotion_action&event_submit_do_update_indexf=1&id=$!foodSetPromotionDO.id" class="modifyIndexf smallLink">修改</a>]</td>
+            #if(${velocityCount} == 1)
+			<td rowspan="$foodSetPromotionDOs.size()">$!foodSetPromotionDO.typeIndex[<a href="$!{adminModule}/update.htm?action=food_set_promotion_action&event_submit_doUpdateTypeIndex=1&type=$!foodSetPromotionDO.type&structureType=$!foodSetPromotionDO.structureType&structureId=$!foodSetPromotionDO.structureId" class="modifyTypeIndex smallLink">修改</a>]</td>
+			#end
+			<td>
+        		<a href="$!{adminModule}/delete.htm?action=food_set_promotion_action&event_submit_do_delete=1&id=$!foodSetPromotionDO.id" class="smallLink">删除</a>	
+    		</td>
+        </tr> 
+		#end
+    #end	
+</table>  
+<script >
+	$(".modifyIndexf").modify('输入新值:',{"name":"indexf"});
+	$(".modifyTypeIndex").modify('输入新值:',{"name":"typeIndex"});
+</script>		
