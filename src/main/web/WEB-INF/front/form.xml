@@ -12,48 +12,6 @@
         http://www.springframework.org/schema/beans http://localhost:8080/schema/www.springframework.org/schema/beans/spring-beans.xsd
     ">
 
-	<services:form postOnlyByDefault="true">
-		<services:group name="csrfTokenCheckGroup">
-			<services:field name="csrfToken">
-				<csrf-validator>
-					<message>提交的数据已过期</message>
-				</csrf-validator>
-			</services:field>
-		</services:group>
 
-		<!-- 注册 -->
-		<services:group name="register" trimmingByDefault="true" extends="csrfTokenCheckGroup">			<services:field name="email" displayName="Email">
-				<required-validator>
-					<message>必须填写${displayName}</message>
-				</required-validator>
-				<regexp-validator pattern="^(?:\w+\.{1})*\w+@(\w+\.)*\w+$">
-					<message>请填写正确的邮箱地址</message>
-				</regexp-validator>
-				<custom-error id="emailError">
-					<message>${message}</message>
-				</custom-error>
-			</services:field>
-			<services:field name="userName" displayName="用户名">
-				<required-validator>
-					<message>必须填写${displayName}</message>
-				</required-validator>
-				<regexp-validator pattern="^[\u4E00-\u9FA5\uF900-\uFA2Da-zA-Z0-9_]{2,16}$">
-					<message>用户名必须由2-16 个字母，数字，汉字或下划线组成</message>
-				</regexp-validator>
-				<custom-error id="userNameError">
-					<message>${message}</message>
-				</custom-error>
-			</services:field>
-			<services:field name="password" displayName="密码">
-				<required-validator>
-					<message>必须填写${displayName}</message>
-				</required-validator>
-				<string-byte-length-validator minLength="4">
-					<message>密码最少4个字符</message>
-				</string-byte-length-validator>
-			</services:field>
-		</services:group>
-
-	</services:form>
 
 </beans:beans>

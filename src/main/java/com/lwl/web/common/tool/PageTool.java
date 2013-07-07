@@ -1,14 +1,11 @@
 package com.lwl.web.common.tool;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.alibaba.common.lang.StringUtil;
 
 public class PageTool {
 
@@ -18,7 +15,7 @@ public class PageTool {
 	public String paging(int page) {
 		StringBuffer buffer = request.getRequestURL();
 
-		String queryString = StringUtil.trimToNull(request.getQueryString());
+		String queryString = request.getQueryString();
 
 		if (queryString != null) {
 			buffer.append('?').append(queryString);

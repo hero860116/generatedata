@@ -12,38 +12,6 @@
         http://www.springframework.org/schema/beans http://localhost:8080/schema/www.springframework.org/schema/beans/spring-beans.xsd
     ">
 
-	<services:form postOnlyByDefault="true">
-		<services:group name="csrfTokenCheckGroup">
-			<services:field name="csrfToken">
-				<csrf-validator>
-					<message>提交的数据已过期</message>
-				</csrf-validator>
-			</services:field>
-		</services:group>
 
-		<!-- 增加帮助模块，父模块与子模块 -->
-		<services:group name="addModifyHelpModule" extends="csrfTokenCheckGroup">
-			<services:field name="id" displayName="id">
-			</services:field>
-			<services:field name="name" displayName="模块名">
-				<required-validator>
-					<message>必须填写${displayName}</message>
-				</required-validator>
-			</services:field>
-			<services:field name="url" displayName="url">
-			</services:field>
-			<services:field name="type" displayName="类型">
-				<required-validator>
-					<message>必须填写${displayName}</message>
-				</required-validator>
-			</services:field>
-			<services:field name="parentId" displayName="父节点">
-				<required-validator>
-					<message>必须填写${displayName}</message>
-				</required-validator>
-			</services:field>
-		</services:group>
-
-	</services:form>
 
 </beans:beans>

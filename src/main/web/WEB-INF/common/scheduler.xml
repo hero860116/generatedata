@@ -3,157 +3,10 @@
 	<!-- 单位 毫秒 -->
 <beans>
 
-	<bean id="printOrderJob" class="org.springframework.scheduling.quartz.JobDetailBean">
-		<property name="jobClass">
-			<generationType>com.lwl.extend.PrintOrderJob</generationType>
-		</property>
-		<property name="jobDataAsMap">
-			<map>
-				<entry key="maxOrderSize">
-					<generationType>20</generationType>
-				</entry>
-				<entry key="groupOrderAO">
-					<ref bean="groupOrderAO" />
-				</entry>
-				<entry key="spellMealAO">
-					<ref bean="spellMealAO" />
-				</entry>
-			</map>
-		</property>
-	</bean>
-	<bean id="simpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerBean">
-		<property name="jobDetail">
-			<ref bean="printOrderJob" />
-		</property>
-		<property name="startDelay">
-			<generationType>100000</generationType>
-		</property>
-		<property name="repeatInterval">
-			<generationType>60000</generationType>
-		</property>
-	</bean>
-
-	
-	<bean id="clearDayPropertiesJob" class="org.springframework.scheduling.quartz.JobDetailBean">
-		<property name="jobClass">
-			<generationType>com.lwl.extend.ClearDayPropertiesJob</generationType>
-		</property>
-		<property name="jobDataAsMap">
-			<map>
-				<entry key="groupShopPrivilegeAO">
-					<ref bean="groupShopPrivilegeAO" />
-				</entry>
-				<entry key="timeControlAO">
-					<ref bean="timeControlAO" />
-				</entry>
-			</map>
-		</property>
-	</bean>
-	<bean id="clearDayPropertiesCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
-		<property name="jobDetail">
-			<ref bean="clearDayPropertiesJob" />
-		</property>
-		<property name="cronExpression">
-			<generationType>0 0 0 * * ?</generationType>
-		</property>
-	</bean>
-	
-	<bean id="statisticsOrderJob" class="org.springframework.scheduling.quartz.JobDetailBean">
-		<property name="jobClass">
-			<generationType>com.lwl.extend.StatisticsOrderJob</generationType>
-		</property>
-		<property name="jobDataAsMap">
-			<map>
-				<entry key="groupOrderAO">
-					<ref bean="groupOrderAO" />
-				</entry>
-			</map>
-		</property>
-	</bean>
-	<bean id="staticsOrderCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
-		<property name="jobDetail">
-			<ref bean="statisticsOrderJob" />
-		</property>
-		<property name="cronExpression">
-			<generationType>0 0 2 * * ?</generationType>
-		</property>
-	</bean>
-	
-	<bean id="syncToMongoDBJob" class="org.springframework.scheduling.quartz.JobDetailBean">
-		<property name="jobClass">
-			<generationType>com.lwl.extend.SyncToMongoDBJob</generationType>
-		</property>
-		<property name="jobDataAsMap">
-			<map>
-				<entry key="foodAO">
-					<ref bean="foodAO" />
-				</entry>
-				<entry key="shopAO">
-					<ref bean="shopAO" />
-				</entry>
-				<entry key="categoryAO">
-					<ref bean="categoryAO" />
-				</entry>
-			</map>
-		</property>
-	</bean>
-	<bean id="syncToMongoDBCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
-		<property name="jobDetail">
-			<ref bean="syncToMongoDBJob" />
-		</property>
-		<property name="cronExpression">
-			<generationType>0 0/5 * * * ?</generationType>
-		</property>
-	</bean>
-	
-	<!-- 同步搜索，每 -->
-	<bean id="syncSearchFoodMOToCacheJob" class="org.springframework.scheduling.quartz.JobDetailBean">
-		<property name="jobClass">
-			<generationType>com.lwl.extend.SyncSearchFoodMOToCacheJob</generationType>
-		</property>
-		<property name="jobDataAsMap">
-			<map>
-				<entry key="foodAO">
-					<ref bean="foodAO" />
-				</entry>
-			</map>
-		</property>
-	</bean>
-	<bean id="syncSearchFoodMOToCacheCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
-		<property name="jobDetail">
-			<ref bean="syncSearchFoodMOToCacheJob" />
-		</property>
-		<property name="cronExpression">
-			<generationType>0 0/5 * * * ?</generationType>
-		</property>
-	</bean>
-	
-	<!-- 同步gps数据，包括点数据和已经计算好的距离数据，每 -->
-	<bean id="syncGpsPointInfoToCacheJob" class="org.springframework.scheduling.quartz.JobDetailBean">
-		<property name="jobClass">
-			<generationType>com.lwl.extend.SyncGpsPointInfoToCacheJob</generationType>
-		</property>
-		<property name="jobDataAsMap">
-			<map>
-				<entry key="gpsPointAO">
-					<ref bean="gpsPointAO" />
-				</entry>
-			</map>
-		</property>
-	</bean>
-	<bean id="syncGpsPointInfoToCacheCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
-		<property name="jobDetail">
-			<ref bean="syncGpsPointInfoToCacheJob" />
-		</property>
-		<property name="cronExpression">
-			<generationType>0 0/5 * * * ?</generationType>
-		</property>
-	</bean>
-	
-	<!-- 统计月销售总量，不是销售总额 -->
+	<!--
 	<bean id="statisticsMonthSalesJob" class="org.springframework.scheduling.quartz.JobDetailBean">
 		<property name="jobClass">
-			<generationType>com.lwl.extend.StatisticsMonthSalesJob</generationType>
+			<value>com.lwl.extend.StatisticsMonthSalesJob</value>
 		</property>
 		<property name="jobDataAsMap">
 			<map>
@@ -168,7 +21,7 @@
 			<ref bean="statisticsMonthSalesJob" />
 		</property>
 		<property name="cronExpression">
-			<generationType>0 0 3 * * ?</generationType>
+			<value>0 0 3 * * ?</value>
 		</property>
 	</bean>
 	
@@ -176,7 +29,6 @@
 	<bean id="SchedulerFactory" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
 		<property name="triggers">
 			<list>
-				<!-- <ref local="simpleTrigger" /> -->
 				<ref local="clearDayPropertiesCronTrigger" />
 				<ref local="staticsOrderCronTrigger" />
 				<ref local="syncToMongoDBCronTrigger" />
@@ -186,4 +38,5 @@
 			</list>
 		</property>
 	</bean>
+        -->
 </beans>

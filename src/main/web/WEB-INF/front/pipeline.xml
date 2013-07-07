@@ -12,52 +12,49 @@
         http://www.springframework.org/schema/beans http://localhost:8080/schema/www.springframework.org/schema/beans/spring-beans.xsd
     ">
 
-    <services:pipeline xmlns="http://www.alibaba.com/schema/services/pipeline/valves">
+    <services:pipeline>
 
         <!-- 初始化turbine rundata，并在pipelineContext中设置可能会用到的对象(如rundata、utils)，以便valve取得。 -->
-        <prepareForTurbine />
-
-        <!-- 预备webx所需的对象。 -->
-        <prepareForWebx2 />
+        <pl-valves:prepareForTurbine />
 
         <!-- 设置日志系统的上下文，支持把当前请求的详情打印在日志中。 -->
-        <setLoggingContext />
+        <pl-valves:setLoggingContext />
 	
         <!-- 分析URL，取得target。 -->
-        <analyzeURL homepage="index" />
+        <pl-valves:analyzeURL homepage="index" />
 
         <!-- 检查csrf token，防止csrf攻击和重复提交。假如request和session中的token不匹配，则出错，或显示expired页面。 -->
-        <checkCsrfToken />
+        <pl-valves:checkCsrfToken />
 
-        <loop>
-            <choose>
+        <pl-valves:loop>
+            <pl-valves:choose>
                 <when>
                     <!-- 执行带模板的screen，默认有layout。 -->
                     <pl-conditions:target-extension-condition extension="null, vm, jsp" />
-                    <performAction />
-                    <performTemplateScreen />
-                    <renderTemplate />
+                    <pl-valves:performAction />
+                    <pl-valves:performTemplateScreen />
+                    <pl-valves:renderTemplate />
                 </when>
                 <when>
                     <!-- 执行不带模板的screen，默认无layout。 -->
                     <pl-conditions:target-extension-condition extension="do" />
-                    <performAction />
-                    <performScreen />
+                    <pl-valves:performAction />
+                    <pl-valves:performScreen />
                 </when>
                 <when>
                     <!-- 读取资源文件。 -->
                     <pl-conditions:path-condition name="/petstore/images/(.+)" />
-                    <getResource name="/petstore/images/$1" />
+                    <pl-valves:getResource name="/petstore/images/$1" />
                 </when>
                 <otherwise>
                     <!-- 将控制交还给servlet engine。 -->
-                    <exit />
+                    <pl-valves:exit />
                 </otherwise>
-            </choose>
+            </pl-valves:choose>
 
             <!-- 假如rundata.setRedirectTarget()被设置，则循环，否则退出循环。 -->
-            <breakUnlessTargetRedirected />
-        </loop>
+            <pl-valves:breakUnlessTargetRedirected />
+        </pl-valves:loop>
 
     </services:pipeline>
 

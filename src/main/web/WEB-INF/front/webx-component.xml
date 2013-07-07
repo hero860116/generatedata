@@ -19,20 +19,13 @@
     <services:webx-configuration />
 
     <!-- 将beans暴露给模板。 -->
-    <services:pull xmlns="http://www.alibaba.com/schema/services/pull/factories">
+    <services:pull>
         <!-- Webx3 tools。 -->
-        <utils />
-        <rundata-tool />
-        <csrfToken />
-        <control-tool />
-        <uris-tool />
-        <form-tool />
-        <bean-tool id="controlCacheTool" class="com.lwl.web.common.tool.ControlCacheTool" scope="request" autowire="true"/>
-		<bean-tool id="pageTool" class="com.lwl.web.common.tool.PageTool" scope="request" autowire="true" />
+        <pull-factories:utils />
+        <pull-factories:rundata-tool />
+        <pull-factories:csrfToken />
+        <pull-factories:control-tool />
+        <pull-factories:uris-tool />
     </services:pull>
-
-    <!-- Webx2兼容设置。 -->
-    <services:webx2-instance-context xmlns="http://www.alibaba.com/schema/webx2-services">
-    </services:webx2-instance-context>
 
 </beans:beans>

@@ -31,7 +31,6 @@ public class TableDAOImpl implements TableDAO{
     @Autowired
     private ComboPooledDataSource comboPooledDataSource;
 
-    @Override
     public TableDO getTableDO(TableDO tableDO) {
         Connection connection = null;
         PreparedStatement pstmt = null;
@@ -60,13 +59,11 @@ public class TableDAOImpl implements TableDAO{
         return tableDO;
     }
 
-    @Override
     public void insert(TableDO tableDO) {
         Connection connection = null;
         PreparedStatement pstmt = null;
     }
 
-    @Override
     public void batchInsert(TableDO tableDO) {
         long s = System.currentTimeMillis();
         Connection connection = null;

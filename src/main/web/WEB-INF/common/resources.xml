@@ -12,7 +12,7 @@
         http://www.springframework.org/schema/beans http://localhost:8080/schema/www.springframework.org/schema/beans/spring-beans.xsd
     ">
 
-    <services:resource-loading xmlns="http://www.alibaba.com/schema/services">
+    <services:resource-loading>
 
         <resource-alias pattern="/" name="/webroot" />
 
