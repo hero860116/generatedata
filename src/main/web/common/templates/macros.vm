@@ -91,10 +91,10 @@
 #set ($_map = $map)
 #set ($_selected = $selected)
 <select name="$name">
-  <option value="">$hint</option>
+  <option generationType="">$hint</option>
 
 #foreach ($_key in $_map.keySet())
-  <option value="$_key" #if ($_key == $_selected) selected #end>$_map.get($_key)</option>
+  <option generationType="$_key" #if ($_key == $_selected) selected #end>$_map.get($_key)</option>
 #end
 
 </select>

@@ -38,7 +38,7 @@
     </appender>
 
     <root>
-        <level value="${loggingLevel}" />
+        <level generationType="${loggingLevel}" />
         <appender-ref ref="STDERR" />
         <appender-ref ref="STDOUT" />
         <appender-ref ref="PROJECT" />

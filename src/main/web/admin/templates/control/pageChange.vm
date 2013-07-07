@@ -60,7 +60,7 @@
 
 <span class="page-skip">
     共$!{tPage}页
-    到第<input type="text" name="page" size="3" value="$query.currentPage" onkeyup="if(event.keyCode==13) jumpPage(this.value);"/>页
+    到第<input type="text" name="page" size="3" generationType="$query.currentPage" onkeyup="if(event.keyCode==13) jumpPage(this.value);"/>页
     <button type="button" onclick="jumpPage(this.parentNode.getElementsByTagName('input')[0].value);">确定</button>
 </span>
 		

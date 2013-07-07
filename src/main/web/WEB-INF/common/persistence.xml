@@ -17,13 +17,13 @@ xsi:schemaLocation="
 			<value>com.mysql.jdbc.Driver</value>
 		</property>
 		<property name="jdbcUrl">
-			<value>jdbc:mysql://localhost:3306/juwaimai?characterEncoding=utf-8</value>
+			<value>jdbc:mysql://localhost:3306/test?rewriteBatchedStatements=true</value>
 		</property>
 		<property name="user">
-			<value>juwaimai</value>
+			<value>root</value>
 		</property>
 		<property name="password">
-			<value>l19860224</value>
+			<value>root</value>
 		</property>
     	
         <property name="checkoutTimeout" value="5000"/>
@@ -64,6 +64,11 @@ xsi:schemaLocation="
 		</property>
 	</bean>
  -->
+    <bean id="simpleJdbcTemplate" class="org.springframework.jdbc.core.simple.SimpleJdbcTemplate">
+        <constructor-arg>
+            <ref bean="tasteDS"/>
+        </constructor-arg>
+    </bean>
  
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
