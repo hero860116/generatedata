@@ -7,73 +7,73 @@ import com.lwl.common.bean.KeyValue;
 
 public enum OperationResultCode {
 
-	/**
-	 * Ã¿Ò»ÖÖ·µ»ØÂë£¬´ú±íÒ»ÖÖ´íÎóÀàĞÍ£¬ÔÙµ÷ÓÃ·½£¨ÊÖ»ú£¬ajax£©´ú±íÒ»ÖÖ²»Í¬µÄ´¦Àí£¬Í¬Ò»´¦Àí·½Ê½Ó¦¸Ã»®ÎªÍ¬Òâ·µ»ØÂë
-	 */
-	SUCESS(0, "³É¹¦"), OTHER_PEOPLE(1, "±»ÆäËûÈË²Ù×÷¹ıÁË"), NOT_EXIST(2, "²Ù×÷Ö÷Ìå²»´æÔÚ£¬¿ÉÄÜ±»ºóÌ¨ÆäËûÈËÉ¾³ıÁË"), OTHER_ERROR(10, "Ê§°Ü");
-	
-	private Integer code;
-	private String message;
-	
-	OperationResultCode(Integer code, String message){
-		this.code = code;
-		this.message = message;
-	}
+    /**
+     * æ¯ä¸€ç§è¿”å›ç ï¼Œä»£è¡¨ä¸€ç§é”™è¯¯ç±»å‹ï¼Œå†è°ƒç”¨æ–¹ï¼ˆæ‰‹æœºï¼Œajaxï¼‰ä»£è¡¨ä¸€ç§ä¸åŒçš„å¤„ç†ï¼ŒåŒä¸€å¤„ç†æ–¹å¼åº”è¯¥åˆ’ä¸ºåŒæ„è¿”å›ç 
+     */
+    SUCESS(0, "æˆåŠŸ"), OTHER_PEOPLE(1, "è¢«å…¶ä»–äººæ“ä½œè¿‡äº†"), NOT_EXIST(2, "æ“ä½œä¸»ä½“ä¸å­˜åœ¨ï¼Œå¯èƒ½è¢«åå°å…¶ä»–äººåˆ é™¤äº†"), OTHER_ERROR(10, "å¤±è´¥");
 
-	public Integer getCode() {
-		return code;
-	}
+    private Integer code;
+    private String message;
 
-	public String getMessage() {
-		return message;
-	}
-	
-	/**
-	 * »ñµÃ½á¹¹µÄkeyvalueÁĞ±í£¬±ãÓÚÇ°¶Ë²Ù×÷(ÏÂÀ­¿ò)
-	 * @return
-	 */
-	public static List<KeyValue> getKeyValues() {
-		List<KeyValue> keyValues = new ArrayList<KeyValue>();
-		
-		for (OperationResultCode operationResultCode : OperationResultCode.values()) {
-			KeyValue keyValue = new KeyValue(operationResultCode.getMessage(), operationResultCode.getCode());
-			keyValues.add(keyValue);
-		}
-		
-		return keyValues;
-	}
-	
-	/**
-	 * ÅĞ¶ÏÊÇ·ñ°üº¬Ö¸¶¨Öµ
-	 * @param status
-	 * @return
-	 */
-	public static boolean containsType(Integer status) {
-		boolean ret = false;
-		for (OperationResultCode operationResultCode : OperationResultCode.values()){
-			if (operationResultCode.getCode().equals(status)) {
-				ret = true;
-				break;
-			}
-		}
-		
-		return ret;
-	}
-	
-	/**
-	 * »ñÈ¡Ö¸¶¨ÖµµÄÃèÊö
-	 * @param status
-	 * @return
-	 */
-	public static String getMessage(Integer status) {
-		String message = "";
-		for (OperationResultCode operationResultCode : OperationResultCode.values()) {
-			if (operationResultCode.getCode().equals(status)) {
-				message = operationResultCode.getMessage();
-				break;
-			}
-		}
-		return message;
-	}
-	
+    OperationResultCode(Integer code, String message){
+        this.code = code;
+        this.message = message;
+    }
+
+    public Integer getCode() {
+        return code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    /**
+     * è·å¾—ç»“æ„çš„keyvalueåˆ—è¡¨ï¼Œä¾¿äºå‰ç«¯æ“ä½œ(ä¸‹æ‹‰æ¡†)
+     * @return
+     */
+    public static List<KeyValue> getKeyValues() {
+        List<KeyValue> keyValues = new ArrayList<KeyValue>();
+
+        for (OperationResultCode operationResultCode : OperationResultCode.values()) {
+            KeyValue keyValue = new KeyValue(operationResultCode.getMessage(), operationResultCode.getCode());
+            keyValues.add(keyValue);
+        }
+
+        return keyValues;
+    }
+
+    /**
+     * åˆ¤æ–­æ˜¯å¦åŒ…å«æŒ‡å®šå€¼
+     * @param status
+     * @return
+     */
+    public static boolean containsType(Integer status) {
+        boolean ret = false;
+        for (OperationResultCode operationResultCode : OperationResultCode.values()){
+            if (operationResultCode.getCode().equals(status)) {
+                ret = true;
+                break;
+            }
+        }
+
+        return ret;
+    }
+
+    /**
+     * è·å–æŒ‡å®šå€¼çš„æè¿°
+     * @param status
+     * @return
+     */
+    public static String getMessage(Integer status) {
+        String message = "";
+        for (OperationResultCode operationResultCode : OperationResultCode.values()) {
+            if (operationResultCode.getCode().equals(status)) {
+                message = operationResultCode.getMessage();
+                break;
+            }
+        }
+        return message;
+    }
+
 }

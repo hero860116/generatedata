@@ -1,101 +1,101 @@
 #** -------------------------------------------
- * ÏÔÊ¾ËùÓĞheaders
+ * æ˜¾ç¤ºæ‰€æœ‰headers
  * -------------------------------------------- *#
 #macro (showHead $defaultTitle)
 
-#showTitle ($defaultTitle)
-#showMetaTags ()
-#showHttpEquiv ()
-#showStylesheets ()
-#showJavascripts ()
+    #showTitle ($defaultTitle)
+    #showMetaTags ()
+    #showHttpEquiv ()
+    #showStylesheets ()
+    #showJavascripts ()
 
 #end
 
 #** -------------------------------------------
- * ÏÔÊ¾±êÌâ£¬Èç¹ûÎ´Ìá¹©±êÌâ£¬ÔòÊ¹ÓÃÄ¬ÈÏÖµ
+ * æ˜¾ç¤ºæ ‡é¢˜ï¼Œå¦‚æœæœªæä¾›æ ‡é¢˜ï¼Œåˆ™ä½¿ç”¨é»˜è®¤å€¼
  * -------------------------------------------- *#
 #macro (showTitle $defaultTitle)
 
-#if( $page.title != "" )
-<title>$page.title</title>
-#else
-<title>$!defaultTitle</title>
-#end
+    #if( $page.title != "" )
+    <title>$page.title</title>
+    #else
+    <title>$!defaultTitle</title>
+    #end
 
 #end
 
 #** -------------------------------------------
- * ÏÔÊ¾meta tags
+ * æ˜¾ç¤ºmeta tags
  * -------------------------------------------- *#
 #macro (showMetaTags)
 
-#foreach($metaTag in $page.metaTags.keySet())
-<meta name="$metaTag" content="$page.metaTags.get($metaTag)">
-#end
+    #foreach($metaTag in $page.metaTags.keySet())
+    <meta name="$metaTag" content="$page.metaTags.get($metaTag)">
+    #end
 
 #end
 
 #** -------------------------------------------
- * ÏÔÊ¾meta http-equiv
+ * æ˜¾ç¤ºmeta http-equiv
  * -------------------------------------------- *#
 #macro (showHttpEquiv)
 
-#foreach($httpEquiv in $page.httpEquivs.keySet())
-<meta http-equiv="$httpEquiv" content="$page.httpEquivs.get($httpEquiv)">
-#end
+    #foreach($httpEquiv in $page.httpEquivs.keySet())
+    <meta http-equiv="$httpEquiv" content="$page.httpEquivs.get($httpEquiv)">
+    #end
 
 #end
 
 #** -------------------------------------------
- * ÏÔÊ¾stylesheets
+ * æ˜¾ç¤ºstylesheets
  * -------------------------------------------- *#
 #macro (showStylesheets)
 
-#foreach( $styleSheet in $page.styleSheets )
-<link rel="stylesheet" href="$styleSheet.Url"
-  #if($styleSheet.Type != "" ) type="$styleSheet.Type" #end
-  #if($styleSheet.Media != "") media="$styleSheet.Media" #end
-  #if($styleSheet.Title != "") title="$styleSheet.Title" #end>
-#end
+    #foreach( $styleSheet in $page.styleSheets )
+    <link rel="stylesheet" href="$styleSheet.Url"
+        #if($styleSheet.Type != "" ) type="$styleSheet.Type" #end
+        #if($styleSheet.Media != "") media="$styleSheet.Media" #end
+        #if($styleSheet.Title != "") title="$styleSheet.Title" #end>
+    #end
 
 #end
 
 #** -------------------------------------------
- * ÏÔÊ¾javascripts
+ * æ˜¾ç¤ºjavascripts
  * -------------------------------------------- *#
 #macro (showJavascripts)
 
-#foreach( $script in $page.scripts )
-<script type="text/javascript" src="$script" language="JavaScript"></script>
-#end
+    #foreach( $script in $page.scripts )
+    <script type="text/javascript" src="$script" language="JavaScript"></script>
+    #end
 
 #end
 
 
 #** -------------------------------------------
- * ÏÔÊ¾body attributes
+ * æ˜¾ç¤ºbody attributes
  * -------------------------------------------- *#
 #macro (bodyAttributes)
 
-#foreach( $attributeName in $page.bodyAttributes.keySet() )
-    $attributeName="$page.bodyAttributes.get($attributeName)"
-#end
+    #foreach( $attributeName in $page.bodyAttributes.keySet() )
+        $attributeName="$page.bodyAttributes.get($attributeName)"
+    #end
 
 #end
 
 #** -------------------------------------------
- * ÏÔÊ¾select box
+ * æ˜¾ç¤ºselect box
  * -------------------------------------------- *#
 #macro (select $name $map $selected $hint)
 
-#set ($_map = $map)
-#set ($_selected = $selected)
+    #set ($_map = $map)
+    #set ($_selected = $selected)
 <select name="$name">
-  <option generationType="">$hint</option>
+    <option generationType="">$hint</option>
 
-#foreach ($_key in $_map.keySet())
-  <option generationType="$_key" #if ($_key == $_selected) selected #end>$_map.get($_key)</option>
-#end
+    #foreach ($_key in $_map.keySet())
+        <option generationType="$_key" #if ($_key == $_selected) selected #end>$_map.get($_key)</option>
+    #end
 
 </select>
 

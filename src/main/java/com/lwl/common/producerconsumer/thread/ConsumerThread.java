@@ -4,48 +4,48 @@ import com.lwl.common.producerconsumer.Queuetask.IManyQueueTask;
 import com.lwl.common.producerconsumer.assigner.AAssigner;
 
 /**
- * ¶à¶ÓÁĞÏû·ÑÕßÏß³Ì
+ * å¤šé˜Ÿåˆ—æ¶ˆè´¹è€…çº¿ç¨‹
  * @author liweilin
  *
  */
 public class ConsumerThread extends Thread
 {
     /**
-     * ·ÖÅäÆ÷
+     * åˆ†é…å™¨
      */
     private AAssigner assigner;
-    
+
     /**
-     * µ±Ç°´¦ÀíµÄÈÎÎñ
+     * å½“å‰å¤„ç†çš„ä»»åŠ¡
      */
     private IManyQueueTask queueTask;
-    
+
     /**
-     * ¹¹Ôì·½·¨
-     * 
-     * @param name     Ïß³ÌÃû³Æ
-     * @param assigner ·ÖÅäÆ÷
+     * æ„é€ æ–¹æ³•
+     *
+     * @param name     çº¿ç¨‹åç§°
+     * @param assigner åˆ†é…å™¨
      */
     public ConsumerThread(String name, AAssigner assigner)
     {
         super(name);
         this.assigner = assigner;
     }
-    
+
     @Override
     public void run()
     {
         while (true)
         {
-            //Í¨¹ı·ÖÅäÆ÷»ñÈ¡ÈÎÎñ
+            //é€šè¿‡åˆ†é…å™¨è·å–ä»»åŠ¡
             queueTask = assigner.obtainTask();
-            
-            //Ö´ĞĞÈÎÎñ
+
+            //æ‰§è¡Œä»»åŠ¡
             queueTask.execute();
-            
-            //ÈÎÎñ½áÊø£¬»¹Ô­Îªnull
+
+            //ä»»åŠ¡ç»“æŸï¼Œè¿˜åŸä¸ºnull
             queueTask = null;
-            
+
             try
             {
                 Thread.sleep(50);
@@ -53,13 +53,13 @@ public class ConsumerThread extends Thread
             catch (InterruptedException e)
             {
             }
-            
+
         }
     }
 
     /**
-     * »ñÈ¡µ±Ç°´¦ÀíµÄÈÎÎñ
-     * @return ·µ»ØÈÎÎñ
+     * è·å–å½“å‰å¤„ç†çš„ä»»åŠ¡
+     * @return è¿”å›ä»»åŠ¡
      */
     public IManyQueueTask getQueueTask()
     {

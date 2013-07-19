@@ -7,32 +7,32 @@ import com.lwl.common.producerconsumer.Queuetask.IManyQueueTask;
 import com.lwl.common.producerconsumer.queue.MyQueue;
 
 /**
- * ·ÖÅäÆ÷ÊµÀı
+ * åˆ†é…å™¨å®ä¾‹
  * @author liweilin
  *
  */
 public abstract class AAssigner<T>
 {
     /**
-     * ÈÎÎñĞÅÏ¢Map
-     * ´æ·ÅÃ¿¸öÈÎÎñÏêÏ¸ĞÅÏ¢£¬·ÖÅäÆ÷ÒÀ¾İÕâĞ©ĞÅÏ¢½øĞĞ·ÖÅäËã·¨¿ØÖÆ
+     * ä»»åŠ¡ä¿¡æ¯Map
+     * å­˜æ”¾æ¯ä¸ªä»»åŠ¡è¯¦ç»†ä¿¡æ¯ï¼Œåˆ†é…å™¨ä¾æ®è¿™äº›ä¿¡æ¯è¿›è¡Œåˆ†é…ç®—æ³•æ§åˆ¶
      */
     protected Map<String, T> taskInfoMap = new ConcurrentHashMap<String, T>();
-    
+
     /**
-     * ¶ÓÁĞMap
-     * ·ÖÅäÆ÷¸ù¾İ·ÖÅäËã·¨´ÓÕâĞ©¶ÓÁĞÖĞ»ñÈ¡ÈÎÎñ
+     * é˜Ÿåˆ—Map
+     * åˆ†é…å™¨æ ¹æ®åˆ†é…ç®—æ³•ä»è¿™äº›é˜Ÿåˆ—ä¸­è·å–ä»»åŠ¡
      */
     protected Map<String, MyQueue<IManyQueueTask>> taskQueueMap;
-    
+
     /**
-     * »ñÈ¡ÈÎÎñ½Ó¿Ú£¬Ïû·ÑÕßÏß³Ìµ÷ÓÃ
-     * @return ÈÎÎñ
+     * è·å–ä»»åŠ¡æ¥å£ï¼Œæ¶ˆè´¹è€…çº¿ç¨‹è°ƒç”¨
+     * @return ä»»åŠ¡
      */
     public abstract IManyQueueTask obtainTask();
-    
+
     /**
-     * ¸ø·ÖÅäÆ÷Ôö¼ÓÒ»¸öÈÎÎñĞÅÏ¢
+     * ç»™åˆ†é…å™¨å¢åŠ ä¸€ä¸ªä»»åŠ¡ä¿¡æ¯
      * @param taskId
      * @param task
      */

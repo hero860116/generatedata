@@ -3,9 +3,9 @@
         <input type="hidden" name="tableName" value="$tableDO.name" />
         <table class="tableStyle" style="width: 400px;">
             <thead>
-            <th>×Ö¶ÎÃû</th>
-            <th>×Ö¶ÎÀàÐÍ</th>
-            <th>Éú³É¹æÔò</th>
+            <th>å­—æ®µå</th>
+            <th>å­—æ®µç±»åž‹</th>
+            <th>ç”Ÿæˆè§„åˆ™</th>
             </thead>
             #foreach($filedDO in $tableDO.fields)
                 <tr>

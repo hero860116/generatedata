@@ -9,7 +9,7 @@ import java.util.Map;
  * Created with IntelliJ IDEA.
  * User: Administrator
  * Date: 13-7-7
- * Time: …œŒÁ9:48
+ * Time: ‰∏äÂçà9:48
  * To change this template use File | Settings | File Templates.
  */
 public class TableDO extends BaseDO{
@@ -26,11 +26,11 @@ public class TableDO extends BaseDO{
         StringBuilder sb = new StringBuilder("insert into ").append(name);
         sb.append("(");
         for (int i=0; i < fields.size(); i++) {
-              FieldDO fieldDO = fields.get(i);
-              sb.append(fieldDO.getName());
-              if (i < fields.size() - 1) {
-                  sb.append(",");
-              }
+            FieldDO fieldDO = fields.get(i);
+            sb.append(fieldDO.getName());
+            if (i < fields.size() - 1) {
+                sb.append(",");
+            }
         }
         sb.append(") values (");
 
@@ -67,7 +67,7 @@ public class TableDO extends BaseDO{
     }
 
     public void addField(FieldDO fieldDO) {
-         fields.add(fieldDO);
+        fields.add(fieldDO);
     }
 
     public List<Map<String, Object>> getFieldValueMapList() {

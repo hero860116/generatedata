@@ -1,20 +1,20 @@
 package com.lwl.common.producerconsumer.Queuetask;
 
 /**
- * ¶à¶ÓÁĞÈÎÎñ
+ * å¤šé˜Ÿåˆ—ä»»åŠ¡
  * @author liweilin
  *
  */
 public interface IManyQueueTask
 {
     /**
-     * Ö´ĞĞ·½·¨
+     * æ‰§è¡Œæ–¹æ³•
      *
      */
     void execute();
-    
+
     /**
-     * »ØÁ÷ÈÎÎñ
+     * å›æµä»»åŠ¡
      *
      */
     void refluenceTask();

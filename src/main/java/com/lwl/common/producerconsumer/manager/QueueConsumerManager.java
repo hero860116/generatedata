@@ -7,61 +7,61 @@ import com.lwl.common.producerconsumer.Queuetask.IQueueTask;
 import com.lwl.common.producerconsumer.thread.SingleConsumerThread;
 
 /**
- * ¶ÓÁĞ£¬Ïû·ÑÕß£¬·ÖÅäÆ÷ ¹ÜÀí
+ * é˜Ÿåˆ—ï¼Œæ¶ˆè´¹è€…ï¼Œåˆ†é…å™¨ ç®¡ç†
  * @author liweilin
  *
  */
 public class QueueConsumerManager
 {
-  
+
     /**
-     * ×èÈû¶ÓÁĞ
+     * é˜»å¡é˜Ÿåˆ—
      */
     private BlockingQueue<IQueueTask> blockingQueue;
-    
+
     /**
-     * ¹¹Ôì¶ÓÁĞÓëÏß³Ì
-     * 
-     * @param name       Ä£Ê½Ãû³Æ
-     * @param queueSize  ¶ÓÁĞ´óĞ¡
-     * @param threadSize Ïß³Ì¸öÊı
+     * æ„é€ é˜Ÿåˆ—ä¸çº¿ç¨‹
+     *
+     * @param name       æ¨¡å¼åç§°
+     * @param queueSize  é˜Ÿåˆ—å¤§å°
+     * @param threadSize çº¿ç¨‹ä¸ªæ•°
      */
     public QueueConsumerManager(String name, int queueSize, int threadSize)
     {
-        //¹¹ÔìÖ¸¶¨´óĞ¡µÄ×èÈû¶ÓÁĞ
+        //æ„é€ æŒ‡å®šå¤§å°çš„é˜»å¡é˜Ÿåˆ—
         blockingQueue = new ArrayBlockingQueue<IQueueTask>(queueSize);
-        
-        //¹¹ÔìÏû·ÑÕßÏß³Ì
+
+        //æ„é€ æ¶ˆè´¹è€…çº¿ç¨‹
         for (int i = 1; i <= threadSize; i++)
         {
-        	 new SingleConsumerThread(name + i, blockingQueue).start();
+            new SingleConsumerThread(name + i, blockingQueue).start();
         }
     }
-    
-   
-    
+
+
+
     /**
-     * Íù¶ÓÁĞÖĞÔö¼Ótask
-     * @param queueTask ¶ÓÁĞÈÎÎñ
-     * @param taskName  ÈÎÎñÃû³Æ
+     * å¾€é˜Ÿåˆ—ä¸­å¢åŠ task
+     * @param queueTask é˜Ÿåˆ—ä»»åŠ¡
+     * @param taskName  ä»»åŠ¡åç§°
      */
     public void put(IQueueTask task)
     {
         try
         {
-            //¼ÓÈëÈÎÎñ
+            //åŠ å…¥ä»»åŠ¡
             blockingQueue.put(task);
         }
         catch (InterruptedException e)
         {
 
         }
-    } 
-    
+    }
+
     /**
-     * »ñÈ¡Éú²úÕßÏû·ÑÕß¶ÓÁĞ´óĞ¡
-     * 
-     * @return ¶ÓÁĞ´óĞ¡
+     * è·å–ç”Ÿäº§è€…æ¶ˆè´¹è€…é˜Ÿåˆ—å¤§å°
+     *
+     * @return é˜Ÿåˆ—å¤§å°
      */
     public int getSize()
     {

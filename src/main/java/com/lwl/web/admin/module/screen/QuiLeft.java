@@ -17,14 +17,14 @@ public class QuiLeft extends BaseScreen {
 
         List<TreeNode> treeNodes = new ArrayList<TreeNode>();
 
-        TreeNode treeNode1 = new TreeNode(1l, 0l, "数据管理");
+        TreeNode treeNode1 = new TreeNode(1l, 0l, "鏁版嵁绠＄悊");
         treeNode1.setOpen(true);
 
-        TreeNode treeNode11 = new TreeNode(1l, "批量数据自动生成", getTurbineURIBroker("adminModule").setTarget("index.vm").render(), "frmright");
+        TreeNode treeNode11 = new TreeNode(1l, "鎵归噺鏁版嵁鑷姩鐢熸垚", getTurbineURIBroker("adminModule").setTarget("index.vm").render(), "frmright");
         treeNodes.add(treeNode1);
         treeNodes.add(treeNode11);
 
-        TreeNode treeNode12 = new TreeNode(1l, "批量数据自动生成2", getTurbineURIBroker("adminModule").setTarget("index.vm").render(), "frmright");
+        TreeNode treeNode12 = new TreeNode(1l, "鎵归噺鏁版嵁鑷姩鐢熸垚2", getTurbineURIBroker("adminModule").setTarget("index.vm").render(), "frmright");
         treeNodes.add(treeNode12);
         context.put("treeNodesJson", new Gson().toJson(treeNodes));
     }

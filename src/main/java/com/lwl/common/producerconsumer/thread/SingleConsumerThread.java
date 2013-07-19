@@ -5,29 +5,29 @@ import java.util.concurrent.BlockingQueue;
 import com.lwl.common.producerconsumer.Queuetask.IQueueTask;
 
 /**
- * ¼òµ¥¶ÓÁĞÏû·ÑÕßÏß³Ì
+ * ç®€å•é˜Ÿåˆ—æ¶ˆè´¹è€…çº¿ç¨‹
  * @author liweilin
  *
  */
 public class SingleConsumerThread extends Thread
 {
     /**
-     * Êı¾İ¶ÓÁĞ
+     * æ•°æ®é˜Ÿåˆ—
      */
     private BlockingQueue<IQueueTask> blockingQueue;
-    
+
     /**
-     * ¹¹Ôì·½°¸
-     * @param name             Ïß³ÌÃû³Æ
-     * @param blockingQueue    ¶ÓÁĞ
+     * æ„é€ æ–¹æ¡ˆ
+     * @param name             çº¿ç¨‹åç§°
+     * @param blockingQueue    é˜Ÿåˆ—
      */
     public SingleConsumerThread(String name, BlockingQueue<IQueueTask> blockingQueue)
     {
         super(name);
-        
+
         this.blockingQueue = blockingQueue;
     }
-    
+
     @Override
     public void run()
     {
@@ -36,9 +36,9 @@ public class SingleConsumerThread extends Thread
             try
             {
                 IQueueTask task = blockingQueue.take();
-                
+
                 task.execute();
-                
+
                 Thread.sleep(50);
             }
             catch (InterruptedException e)

@@ -10,17 +10,17 @@ import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import com.ibatis.sqlmap.client.SqlMapExecutor;
 
 /**
- * 
- * °ü×°ÁËsqlMapClientTemplate µÄdao²Ù×÷·½·¨,ÈÓ³öÁËcheckedException,Ä£·Âcommon-dao.jar
- * 
+ *
+ * åŒ…è£…äº†sqlMapClientTemplate çš„daoæ“ä½œæ–¹æ³•,æ‰”å‡ºäº†checkedException,æ¨¡ä»¿common-dao.jar
+ *
  * @create Mar 26, 2008
  * @author dongbai mailto:dongbai@taobao.com
- * 
+ *
  */
 public class BaseDAO {
 
     /**
-     * ×¢Èë sqlMapClientTemplate
+     * æ³¨å…¥ sqlMapClientTemplate
      */
     private SqlMapClientTemplate sqlMapClientTemplate;
 
@@ -29,31 +29,31 @@ public class BaseDAO {
     }
 
     public Object queryForObject(String statementName, Object parameterObject) {
-            return sqlMapClientTemplate.queryForObject(statementName, parameterObject);
+        return sqlMapClientTemplate.queryForObject(statementName, parameterObject);
     }
 
     public List<?> queryForList(String statementName, Object parameterObject) {
-            return sqlMapClientTemplate.queryForList(statementName, parameterObject);
+        return sqlMapClientTemplate.queryForList(statementName, parameterObject);
     }
 
     public Map<?, ?> queryForMap(String statementName, Object parameterObject, String keyProperty) {
-            return sqlMapClientTemplate.queryForMap(statementName, parameterObject, keyProperty);
+        return sqlMapClientTemplate.queryForMap(statementName, parameterObject, keyProperty);
     }
 
     public int update(String statementName, Object parameterObject) {
-            return sqlMapClientTemplate.update(statementName, parameterObject);
+        return sqlMapClientTemplate.update(statementName, parameterObject);
     }
 
     public Object insert(String statementName, Object parameterObject) {
-            return sqlMapClientTemplate.insert(statementName, parameterObject);
+        return sqlMapClientTemplate.insert(statementName, parameterObject);
     }
 
     public Object QueryForObject(String statementName) {
-            return sqlMapClientTemplate.queryForObject(statementName);
+        return sqlMapClientTemplate.queryForObject(statementName);
     }
 
     public Object insertOrUpdate(String countStatementName, String insertStatementName, String updateStatementName,
-            Object parameterObject) {
+                                 Object parameterObject) {
         Integer count = (Integer) this.queryForObject(countStatementName, parameterObject);
         if (null != count && count.intValue() > 0) {
             return this.update(updateStatementName, parameterObject);
@@ -62,31 +62,31 @@ public class BaseDAO {
     }
 
     public List<?> queryForList(String statementName) {
-            return sqlMapClientTemplate.queryForList(statementName);
+        return sqlMapClientTemplate.queryForList(statementName);
     }
 
     public Object queryForObject(String statementName) {
-            return sqlMapClientTemplate.queryForObject(statementName);
+        return sqlMapClientTemplate.queryForObject(statementName);
     }
 
     public int delete(String statementName) {
-            return sqlMapClientTemplate.delete(statementName);
+        return sqlMapClientTemplate.delete(statementName);
     }
 
     public int delete(String statementName, Object parameterObject) {
-            return sqlMapClientTemplate.delete(statementName, parameterObject);
+        return sqlMapClientTemplate.delete(statementName, parameterObject);
     }
 
     /**
-     * ÅúÁ¿¸üĞÂ
-     * Ö»ÄÜ¶ÔÍ¬ÀàĞÍµÄ¸üĞÂÓĞĞ§
-     * 
-     * @param statementName 
+     * æ‰¹é‡æ›´æ–°
+     * åªèƒ½å¯¹åŒç±»å‹çš„æ›´æ–°æœ‰æ•ˆ
+     *
+     * @param statementName
      * @param parameterObjects
      * @return
      */
     public int batchUpdate(final String statementName, final List<Object> parameterObjects) {
-        
+
         return (Integer)sqlMapClientTemplate.execute(new SqlMapClientCallback() {
             public Object doInSqlMapClient(SqlMapExecutor executor) throws SQLException {
                 executor.startBatch();
@@ -97,17 +97,17 @@ public class BaseDAO {
             }
         });
     }
-    
+
     /**
-     * ÅúÁ¿²åÈë
-     * Ö»ÄÜ¶ÔÍ¬ÀàĞÍµÄ¸üĞÂÓĞĞ§
-     * 
-     * @param statementName 
+     * æ‰¹é‡æ’å…¥
+     * åªèƒ½å¯¹åŒç±»å‹çš„æ›´æ–°æœ‰æ•ˆ
+     *
+     * @param statementName
      * @param parameterObjects
      * @return
      */
     public int batchInsert(final String statementName, final List<Object> parameterObjects) {
-        
+
         return (Integer)sqlMapClientTemplate.execute(new SqlMapClientCallback() {
             public Object doInSqlMapClient(SqlMapExecutor executor) throws SQLException {
                 executor.startBatch();

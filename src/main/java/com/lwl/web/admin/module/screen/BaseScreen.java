@@ -10,62 +10,62 @@ import com.alibaba.citrus.turbine.uribroker.uri.TurbineURIBroker;
 import com.alibaba.citrus.turbine.util.TurbineUtil;
 
 public class BaseScreen{
-	@Resource
-	private URIBrokerService uriBrokerService;
-	
-	@Resource
-	private HttpServletRequest request;
-	
-	//·µ»ØÄ£¿éµØÖ·
-	protected TurbineURIBroker getTurbineURIBroker(String turbineUriName) {
-		return (TurbineURIBroker)uriBrokerService.getURIBroker(turbineUriName);
-	}
-	
-	@SuppressWarnings("unchecked")
-	protected <T extends URIBroker> T getURIBroker(String uriName) {
-		return (T)uriBrokerService.getURIBroker(uriName);
-	}	
-	
-	/**
-	 * ×ªµ½ÓÃ»§Ğ£Ñé³ö´íÒ³
-	 * @param message
-	 */
-	protected void redirectToUserError(String message) {
-		TurbineRunData rundata = TurbineUtil.getTurbineRunData(request);
-		rundata.setRedirectLocation(getTurbineURIBroker("commonModule").setTarget("userError.vm").addQueryData("v_param", "message").addQueryData("message", message).render());
-	}
-	
-	/**
-	 * ×ªµ½ÓÃ»§Ğ£Ñé³ö´íÒ³
-	 */
-	protected void redirectToUserError() {
-		redirectToUserError("ºÜ±§Ç¸£¬Äú·ÃÎÊµÄÒ³Ãæ²»´æÔÚ!");
-	}
-	
-	/**
-	 * ×ªµ½ÏµÍ³´íÎóÒ³Ãæ
-	 * @param message
-	 */
-	protected void redirectToSystemError(String message) {
-		TurbineRunData rundata = TurbineUtil.getTurbineRunData(request);
-		rundata.setRedirectLocation(getTurbineURIBroker("commonModule").setTarget("systemError.vm").render());
-	}
-	
-	/**
-	 * ×ªµ½ÌáÊ¾ĞÅÏ¢Ò³Ãæ
-	 * @param message
-	 */
-	protected void redirectToTipInfo(String message) {
-		TurbineRunData rundata = TurbineUtil.getTurbineRunData(request);
-		rundata.setRedirectLocation(getTurbineURIBroker("commonModule").setTarget("info.vm").addQueryData("v_param", "message").addQueryData("message", message).render());
-	}
-	
-	/**
-	 * ×ªµ½³É¹¦ĞÅÏ¢Ò³Ãæ
-	 * @param message
-	 */
-	protected void redirectToSuccess(String message) {
-		TurbineRunData rundata = TurbineUtil.getTurbineRunData(request);
-		rundata.setRedirectLocation(getTurbineURIBroker("commonModule").setTarget("success").addQueryData("v_param", "message").addQueryData("message", message).render());
-	}
+    @Resource
+    private URIBrokerService uriBrokerService;
+
+    @Resource
+    private HttpServletRequest request;
+
+    //è¿”å›æ¨¡å—åœ°å€
+    protected TurbineURIBroker getTurbineURIBroker(String turbineUriName) {
+        return (TurbineURIBroker)uriBrokerService.getURIBroker(turbineUriName);
+    }
+
+    @SuppressWarnings("unchecked")
+    protected <T extends URIBroker> T getURIBroker(String uriName) {
+        return (T)uriBrokerService.getURIBroker(uriName);
+    }
+
+    /**
+     * è½¬åˆ°ç”¨æˆ·æ ¡éªŒå‡ºé”™é¡µ
+     * @param message
+     */
+    protected void redirectToUserError(String message) {
+        TurbineRunData rundata = TurbineUtil.getTurbineRunData(request);
+        rundata.setRedirectLocation(getTurbineURIBroker("commonModule").setTarget("userError.vm").addQueryData("v_param", "message").addQueryData("message", message).render());
+    }
+
+    /**
+     * è½¬åˆ°ç”¨æˆ·æ ¡éªŒå‡ºé”™é¡µ
+     */
+    protected void redirectToUserError() {
+        redirectToUserError("å¾ˆæŠ±æ­‰ï¼Œæ‚¨è®¿é—®çš„é¡µé¢ä¸å­˜åœ¨!");
+    }
+
+    /**
+     * è½¬åˆ°ç³»ç»Ÿé”™è¯¯é¡µé¢
+     * @param message
+     */
+    protected void redirectToSystemError(String message) {
+        TurbineRunData rundata = TurbineUtil.getTurbineRunData(request);
+        rundata.setRedirectLocation(getTurbineURIBroker("commonModule").setTarget("systemError.vm").render());
+    }
+
+    /**
+     * è½¬åˆ°æç¤ºä¿¡æ¯é¡µé¢
+     * @param message
+     */
+    protected void redirectToTipInfo(String message) {
+        TurbineRunData rundata = TurbineUtil.getTurbineRunData(request);
+        rundata.setRedirectLocation(getTurbineURIBroker("commonModule").setTarget("info.vm").addQueryData("v_param", "message").addQueryData("message", message).render());
+    }
+
+    /**
+     * è½¬åˆ°æˆåŠŸä¿¡æ¯é¡µé¢
+     * @param message
+     */
+    protected void redirectToSuccess(String message) {
+        TurbineRunData rundata = TurbineUtil.getTurbineRunData(request);
+        rundata.setRedirectLocation(getTurbineURIBroker("commonModule").setTarget("success").addQueryData("v_param", "message").addQueryData("message", message).render());
+    }
 }

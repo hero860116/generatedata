@@ -2,7 +2,7 @@
 <!doctype html>
 <html>
 <head>
-    <meta charset="gbk" />
+    <meta charset="utf-8" />
     <title>聚外卖 - 贴心外卖服务</title>
     <!--
     <script type="text/javascript" src="$staticsContent.getURI('js/jquery-1.6.4.min.js')" ></script>

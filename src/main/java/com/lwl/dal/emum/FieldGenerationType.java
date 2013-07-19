@@ -9,11 +9,11 @@ import java.util.List;
  * Created with IntelliJ IDEA.
  * User: Administrator
  * Date: 13-7-7
- * Time: ÏÂÎç2:28
+ * Time: ä¸‹åˆ2:28
  * To change this template use File | Settings | File Templates.
  */
 public enum FieldGenerationType {
-    random(1, "Ëæ»úÉú³É"), increase(2, "×ÔÔö³¤");
+    random(1, "éšæœºç”Ÿæˆ"), increase(2, "è‡ªå¢é•¿");
 
     private Integer type;
     private String message;

@@ -19,7 +19,7 @@ import java.util.Map;
  * Created with IntelliJ IDEA.
  * User: Administrator
  * Date: 13-7-7
- * Time: ÉÏÎç9:59
+ * Time: ä¸Šåˆ9:59
  * To change this template use File | Settings | File Templates.
  */
 @Service("tableDAO")
@@ -49,7 +49,7 @@ public class TableDAOImpl implements TableDAO{
 
                 System.out.println(rsmd.getColumnName(i)+ "  " +rsmd.getColumnTypeName(i)
                         +"  " +rsmd.getColumnClassName(i)+ "  "+rsmd.getTableName(i) + " ," +  rsmd.getColumnLabel(i)
-                + " ," +  rsmd.getColumnType(i) + " ," +  rsmd.getCatalogName(i) + " ," +  rsmd.getSchemaName(i) + " ," +  rsmd.getPrecision(i) + " ," +  rsmd.getScale(i));
+                        + " ," +  rsmd.getColumnType(i) + " ," +  rsmd.getCatalogName(i) + " ," +  rsmd.getSchemaName(i) + " ," +  rsmd.getPrecision(i) + " ," +  rsmd.getScale(i));
             }
 
         } catch (SQLException e) {
@@ -77,11 +77,11 @@ public class TableDAOImpl implements TableDAO{
 
             List<FieldDO> fields = tableDO.getFields();
 
-            //±ãÀûÖµÁĞ±í
+            //ä¾¿åˆ©å€¼åˆ—è¡¨
             for (int j = 0; j < tableDO.getFieldValueMapList().size(); j++)   {
                 Map<String, Object> fieldValueMap =     tableDO.getFieldValueMapList().get(j) ;
 
-                //°´fieldsµÄË³ĞòÉèÖµ
+                //æŒ‰fieldsçš„é¡ºåºè®¾å€¼
                 for (int i=0; i < fields.size(); i++) {
                     FieldDO fieldDO = fields.get(i);
                     pstmt.setObject(i+1, fieldValueMap.get(fieldDO.getName()));

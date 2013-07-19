@@ -1,25 +1,25 @@
 <div class="secondary">
 
-#set($session = $rundata.getRequest().getSession())
-<ul class="nav">
-<!--
-	<li class="first"><a href="/lwl/admin/add_province.htm">增加省份</a></li>
+    #set($session = $rundata.getRequest().getSession())
+    <ul class="nav">
+        <!--
+            <li class="first"><a href="/lwl/admin/add_province.htm">澧炲姞鐪佷唤</a></li>
 
-	<li><a href="/lwl/admin/add_area.htm">增加区域</a></li>
--->
-    #if($session.getAttribute("userType") == 2)
-	<li><a href="$!adminModule.setTarget('categoryAddressList.vm')">区域管理</a></li>
-	#end
-	<li><a href="$!adminModule.setTarget('shopList.vm')">店铺管理</a></li>
-	#if($session.getAttribute("userType") == 2)
-	<li><a href="$!adminModule.setTarget('classes_list.htm')">类别管理</a></li>
-	<li><a href="$!adminModule.setTarget('emailList.vm')">邮箱管理</a></li>
-	<li><a href="$!adminModule.setTarget('user_list.htm')">用户管理</a></li>
-	<li><a href="$!adminModule.setTarget('phoneUserList.vm')">电话用户管理</a></li>
-	<li><a href="$!adminModule.setTarget('area_authority_list.htm')">权限管理</a></li>
-	<li><a href="$!adminModule.setTarget('helpModuleList.vm')">帮助管理</a></li>
-	#end
+            <li><a href="/lwl/admin/add_area.htm">澧炲姞鍖哄煙</a></li>
+        -->
+        #if($session.getAttribute("userType") == 2)
+            <li><a href="$!adminModule.setTarget('categoryAddressList.vm')">鍖哄煙绠＄悊</a></li>
+        #end
+        <li><a href="$!adminModule.setTarget('shopList.vm')">搴楅摵绠＄悊</a></li>
+        #if($session.getAttribute("userType") == 2)
+            <li><a href="$!adminModule.setTarget('classes_list.htm')">绫诲埆绠＄悊</a></li>
+            <li><a href="$!adminModule.setTarget('emailList.vm')">閭绠＄悊</a></li>
+            <li><a href="$!adminModule.setTarget('user_list.htm')">鐢ㄦ埛绠＄悊</a></li>
+            <li><a href="$!adminModule.setTarget('phoneUserList.vm')">鐢佃瘽鐢ㄦ埛绠＄悊</a></li>
+            <li><a href="$!adminModule.setTarget('area_authority_list.htm')">鏉冮檺绠＄悊</a></li>
+            <li><a href="$!adminModule.setTarget('helpModuleList.vm')">甯姪绠＄悊</a></li>
+        #end
 
-</ul>
+    </ul>
 
 </div>

@@ -7,63 +7,63 @@ import org.springframework.stereotype.Component;
 
 @Component("stringUtil")
 public class StringUtil {
-	
-	public String truncStr(String src, int index) {
-		String truncStr = src;
-		
-		if (src.length() > index) {
-			truncStr = src.substring(0, index);
-			truncStr = truncStr + "...";
-		}
-		
-		return truncStr;
-	}
-	
-	public String truncStr(String src, int index, String suffix) {
-		String truncStr = src;
-		
-		if (src.length() > index) {
-			truncStr = src.substring(0, index);
-			
-			if (suffix != null) {
-				truncStr = truncStr + "...";
-			} 
-		}
-		
-		return truncStr;
-	}
 
-	 /**
-     * ½âÎöÊôĞÔ¶Ô
-     * 
-     * @param paramStr ÊôĞÔ¶Ô×Ö·û´®
-     * @param separators ÊôĞÔ¶Ô·Ö¸ô·û£¬´ÓÇ°µ½ºó,ÓÅÏÈ¼¶¸ßµÄÏÈ´«Èë   Èç£º"name=lwl&age=25" ´«Èë:&,=
+    public String truncStr(String src, int index) {
+        String truncStr = src;
+
+        if (src.length() > index) {
+            truncStr = src.substring(0, index);
+            truncStr = truncStr + "...";
+        }
+
+        return truncStr;
+    }
+
+    public String truncStr(String src, int index, String suffix) {
+        String truncStr = src;
+
+        if (src.length() > index) {
+            truncStr = src.substring(0, index);
+
+            if (suffix != null) {
+                truncStr = truncStr + "...";
+            }
+        }
+
+        return truncStr;
+    }
+
+    /**
+     * è§£æå±æ€§å¯¹
+     *
+     * @param paramStr å±æ€§å¯¹å­—ç¬¦ä¸²
+     * @param separators å±æ€§å¯¹åˆ†éš”ç¬¦ï¼Œä»å‰åˆ°å,ä¼˜å…ˆçº§é«˜çš„å…ˆä¼ å…¥   å¦‚ï¼š"name=lwl&age=25" ä¼ å…¥:&,=
      * @return
      */
     public Map<String, String> getParameterPair(String paramStr, String... separators) {
         Map<String, String> paras = new HashMap<String, String>();
-        
+
         if (paramStr != null) {
-            //³õÊ¼»¯
+            //åˆå§‹åŒ–
             String[] paramArray = new String[]{paramStr.trim()};
 
-            //³õÊ¼»¯
+            //åˆå§‹åŒ–
             int size = 0;
-            
+
             executeParse(paras, paramArray, size, separators);
         }
 
         return paras;
     }
-    
-    //ÅäºÏ½âÎöÊôĞÔ¶Ô£¬ÊÇÒ»¸öµü´ú·½·¨
+
+    //é…åˆè§£æå±æ€§å¯¹ï¼Œæ˜¯ä¸€ä¸ªè¿­ä»£æ–¹æ³•
     private void executeParse(Map<String, String> params, String[] paramArray,  int size, String... separators) {
 
         int moreSize = size + 1;
         for (int i = 0; i < paramArray.length; i++) {
             String sss = paramArray[i];
             String[] paramStrs = sss.split(separators[size]);
-            
+
             if (moreSize < separators.length) {
                 executeParse(params, paramStrs, moreSize, separators);
             } else {
@@ -77,74 +77,74 @@ public class StringUtil {
             }
         }
     }
-    
-	/**
-	 * Èç¹ûsrc²»×ãÎ»Êı£¬ÓÃcomp²¹È«
-	 * @param src
-	 * @param length
-	 * @param isLeft true:±íÊ¾²¹ÔÚ×ó±ß£¬false£º±íÊ¾²¹ÔÚÓÒ±ß
-	 * @return
-	 */
-	public static String getStringCompletion(String src, int length,  String comp ,boolean isLeft) {
-		int len = length - src.length();
-		if (len > 0) {
-			for (int i = 0; i < len; i++) {
-				if (isLeft) {
-					src = comp + src;
-				} else {
-					src += comp;
-				}
-			}
-		}
-		
-		return src;
-	}
-	
-	/**
-	 * »ñµÃ×Ö·û´®µÄ×Ö½Ú³¤¶È£¬Èç¹ûÊÇÖĞÎÄ£¬ÈÏÎªÊÇÁ½¸ö×Ö½Ú
-	 * @param str
-	 * @return
-	 */
-	public static int getByteSize(String str) {
-		int size = 0;
-		
-		if (str != null) {
-			for (int i = 0; i < str.length(); i++) {
-				String c = str.substring(i, i+1);
-				if (c.matches("[\\u4e00-\\u9fa5]")){
-					size += 2;
-				} else {
-					size += 1;
-				}
-			}
-		}
-		
-		return size;
-	}
-	
-	/**
-	 * ½ØÈ¡×Ö·û´®£¬³¤¶È²»¹»Ê±£¬²»»á±¨´í
-	 * @param src
-	 * @param start
-	 * @param end
-	 * @return
-	 */
-	public static String subString(String src, int start, int end) {
-		if (src == null) {
-			return "";
-		}
-		
-		int length = src.length();
-		if (start > length) {
-			return "";
-		} else if (start == length) {
-			return src.substring(start);
-		}
-		
-		if (length < end) {
-			end = length;
-		}
-		
-		return src.substring(start, end);
-	}
+
+    /**
+     * å¦‚æœsrcä¸è¶³ä½æ•°ï¼Œç”¨compè¡¥å…¨
+     * @param src
+     * @param length
+     * @param isLeft true:è¡¨ç¤ºè¡¥åœ¨å·¦è¾¹ï¼Œfalseï¼šè¡¨ç¤ºè¡¥åœ¨å³è¾¹
+     * @return
+     */
+    public static String getStringCompletion(String src, int length,  String comp ,boolean isLeft) {
+        int len = length - src.length();
+        if (len > 0) {
+            for (int i = 0; i < len; i++) {
+                if (isLeft) {
+                    src = comp + src;
+                } else {
+                    src += comp;
+                }
+            }
+        }
+
+        return src;
+    }
+
+    /**
+     * è·å¾—å­—ç¬¦ä¸²çš„å­—èŠ‚é•¿åº¦ï¼Œå¦‚æœæ˜¯ä¸­æ–‡ï¼Œè®¤ä¸ºæ˜¯ä¸¤ä¸ªå­—èŠ‚
+     * @param str
+     * @return
+     */
+    public static int getByteSize(String str) {
+        int size = 0;
+
+        if (str != null) {
+            for (int i = 0; i < str.length(); i++) {
+                String c = str.substring(i, i+1);
+                if (c.matches("[\\u4e00-\\u9fa5]")){
+                    size += 2;
+                } else {
+                    size += 1;
+                }
+            }
+        }
+
+        return size;
+    }
+
+    /**
+     * æˆªå–å­—ç¬¦ä¸²ï¼Œé•¿åº¦ä¸å¤Ÿæ—¶ï¼Œä¸ä¼šæŠ¥é”™
+     * @param src
+     * @param start
+     * @param end
+     * @return
+     */
+    public static String subString(String src, int start, int end) {
+        if (src == null) {
+            return "";
+        }
+
+        int length = src.length();
+        if (start > length) {
+            return "";
+        } else if (start == length) {
+            return src.substring(start);
+        }
+
+        if (length < end) {
+            end = length;
+        }
+
+        return src.substring(start, end);
+    }
 }

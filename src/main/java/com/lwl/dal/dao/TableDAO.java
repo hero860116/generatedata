@@ -6,25 +6,25 @@ import com.lwl.dal.dataobject.TableDO;
  * Created with IntelliJ IDEA.
  * User: Administrator
  * Date: 13-7-7
- * Time: ÉÏÎç9:57
+ * Time: ä¸Šåˆ9:57
  * To change this template use File | Settings | File Templates.
  */
 public interface TableDAO {
     /**
-     * ¸ù¾İ±íÃû»ñµÃ±í½á¹¹
+     * æ ¹æ®è¡¨åè·å¾—è¡¨ç»“æ„
      *
      * @param tableDO@return
      */
     TableDO getTableDO(TableDO tableDO);
 
     /**
-     * ²åÈëÊı¾İ¿â
+     * æ’å…¥æ•°æ®åº“
      * @param tableDO
      */
     void insert(TableDO tableDO);
 
     /**
-     * ÅúÁ¿²åÈëÊı¾İ¿â
+     * æ‰¹é‡æ’å…¥æ•°æ®åº“
      * @param tableDO
      */
     void batchInsert(TableDO tableDO);

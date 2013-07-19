@@ -1,37 +1,37 @@
 package com.lwl.common.bean;
 
 /**
- * ÒµÎñ¸¨Öú¶ÔÏó£¬ÔÝÇÒ·Åµ½poÖÐ
- * 
+ * ä¸šåŠ¡è¾…åŠ©å¯¹è±¡ï¼Œæš‚ä¸”æ”¾åˆ°poä¸­
+ *
  * @author Administrator
  *
  */
 public class KeyValue {
 
-	private String key;
-	
-	private Object value;
+    private String key;
 
-	public KeyValue(String key, Object value) {
-		super();
-		this.key = key;
-		this.value = value;
-	}
+    private Object value;
 
-	
-	public String getKey() {
-		return key;
-	}
+    public KeyValue(String key, Object value) {
+        super();
+        this.key = key;
+        this.value = value;
+    }
 
-	public void setKey(String key) {
-		this.key = key;
-	}
 
-	public Object getValue() {
-		return value;
-	}
+    public String getKey() {
+        return key;
+    }
 
-	public void setValue(Object value) {
-		this.value = value;
-	}
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public Object getValue() {
+        return value;
+    }
+
+    public void setValue(Object value) {
+        this.value = value;
+    }
 }

@@ -6,27 +6,27 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * Ö§³Ö»ØÁ÷µÄ¶ÓÁĞ
+ * æ”¯æŒå›æµçš„é˜Ÿåˆ—
  * @author liweilin
  *
  * @param <T>
  */
 public class MyQueue<T>
 {
-    
+
     private LinkedList<T> queue = new LinkedList<T>();
 
     private int maxSize;
 
-    //Ëø
+    //é”
     private final ReentrantLock lock;
-    
-    //Ìõ¼ş
+
+    //æ¡ä»¶
     private final Condition notFull;;
 
     /**
-     * ³õÊ¼»¯·½·¨
-     * @param size ´óĞ¡
+     * åˆå§‹åŒ–æ–¹æ³•
+     * @param size å¤§å°
      */
     public MyQueue(int size)
     {
@@ -36,7 +36,7 @@ public class MyQueue<T>
     }
 
     /**
-     * ÎŞ×èÈûÔö¼ÓÔªËØ
+     * æ— é˜»å¡å¢åŠ å…ƒç´ 
      * @param e
      */
     public void addFirst(T e)
@@ -45,7 +45,7 @@ public class MyQueue<T>
     }
 
     /**
-     * ÓĞ×èÈûÔö¼ÓÔªËØ
+     * æœ‰é˜»å¡å¢åŠ å…ƒç´ 
      * @param e
      * @throws InterruptedException
      */
@@ -67,9 +67,9 @@ public class MyQueue<T>
         }
     }
 
-    
+
     /**
-     * ÎŞ×èÈû»ñÈ¡Êı¾İ
+     * æ— é˜»å¡è·å–æ•°æ®
      * @return
      */
     public T take()
@@ -91,16 +91,16 @@ public class MyQueue<T>
     }
 
     /**
-     * ÅĞ¶Ï¶ÓÁĞÊÇ·ñÎª¿Õ
+     * åˆ¤æ–­é˜Ÿåˆ—æ˜¯å¦ä¸ºç©º
      * @return
      */
     public boolean isEmpty()
     {
         return queue.isEmpty();
     }
-    
+
     /**
-     * »ñµÃ¶ÓÁĞ´óĞ¡
+     * è·å¾—é˜Ÿåˆ—å¤§å°
      * @return
      */
     public int size()

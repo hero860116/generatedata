@@ -4,7 +4,7 @@ package com.lwl.dal.dataobject;
  * Created with IntelliJ IDEA.
  * User: Administrator
  * Date: 13-7-7
- * Time: ÉÏÎç9:51
+ * Time: ä¸Šåˆ9:51
  * To change this template use File | Settings | File Templates.
  */
 public class FieldDO extends BaseDO{

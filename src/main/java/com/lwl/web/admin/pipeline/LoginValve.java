@@ -12,10 +12,10 @@ import com.alibaba.citrus.turbine.uribroker.uri.TurbineURIBroker;
 import com.alibaba.citrus.turbine.util.TurbineUtil;
 
 /**
- * 如果没登陆跳转到登陆页面
- * 
+ * 濡傛灉娌＄櫥闄嗚烦杞埌鐧婚檰椤甸潰
+ *
  * @author liweilin
- * 
+ *
  */
 public class LoginValve extends AbstractValve {
 
@@ -24,26 +24,26 @@ public class LoginValve extends AbstractValve {
 
     @Resource
     private HttpServletRequest request;
-    
+
     @Resource
     private HttpSession session;
 
     public void invoke(PipelineContext pipelineContext) throws Exception {
-    	
-    	//为ajax查询命令
-    	if (request.getRequestURI().contains("admin/success")) {
-    		pipelineContext.invokeNext();
-    		return;
-    	}
-    	
-    	if ((Long)session.getAttribute("userId") == null) {
+
+        //涓篴jax鏌ヨ鍛戒护
+        if (request.getRequestURI().contains("admin/success")) {
+            pipelineContext.invokeNext();
+            return;
+        }
+
+        if ((Long)session.getAttribute("userId") == null) {
             TurbineRunData rundata = TurbineUtil.getTurbineRunData(request);
             TurbineURIBroker tasteModule = (TurbineURIBroker)uriBrokerService.getURIBroker("tasteModule");
             rundata.setRedirectLocation(tasteModule.setTarget("login.vm").render());
-            
+
             return;
-    	}
-    	
+        }
+
         pipelineContext.invokeNext();
     }
 

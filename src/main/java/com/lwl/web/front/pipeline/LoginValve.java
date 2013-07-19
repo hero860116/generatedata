@@ -12,10 +12,10 @@ import com.alibaba.citrus.turbine.uribroker.uri.TurbineURIBroker;
 import com.alibaba.citrus.turbine.util.TurbineUtil;
 
 /**
- * Èç¹ûÃ»µÇÂ½Ìø×ªµ½µÇÂ½Ò³Ãæ
- * 
+ * å¦‚æœæ²¡ç™»é™†è·³è½¬åˆ°ç™»é™†é¡µé¢
+ *
  * @author liweilin
- * 
+ *
  */
 public class LoginValve extends AbstractValve {
 
@@ -24,23 +24,23 @@ public class LoginValve extends AbstractValve {
 
     @Resource
     private HttpServletRequest request;
-    
+
     @Resource
     private HttpSession session;
 
     public void invoke(PipelineContext pipelineContext) throws Exception {
-    	
-    	//Èç¹ûÇëÇóµÄÊÇ¾²Ì¬×ÊÔ´,²»×ßvalve
-    	if (request.getRequestURI().contains("user_address_list.htm") || request.getRequestURI().contains("modify_password.htm") || request.getRequestURI().contains("recent_order_list.htm")) {
-        	if ((Long)session.getAttribute("userId") == null) {
+
+        //å¦‚æœè¯·æ±‚çš„æ˜¯é™æ€èµ„æº,ä¸èµ°valve
+        if (request.getRequestURI().contains("user_address_list.htm") || request.getRequestURI().contains("modify_password.htm") || request.getRequestURI().contains("recent_order_list.htm")) {
+            if ((Long)session.getAttribute("userId") == null) {
                 TurbineRunData rundata = TurbineUtil.getTurbineRunData(request);
                 TurbineURIBroker tasteModule = (TurbineURIBroker)uriBrokerService.getURIBroker("tasteModule");
                 rundata.setRedirectLocation(tasteModule.setTarget("login.vm").render());
-                
+
                 return;
-        	}
-    	}
-    	
+            }
+        }
+
         pipelineContext.invokeNext();
     }
 

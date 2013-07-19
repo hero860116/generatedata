@@ -1,14 +1,14 @@
 package com.lwl.common.producerconsumer.Queuetask;
 
 /**
- * ¼òµ¥¶ÓÁĞÈÎÎñ
+ * ç®€å•é˜Ÿåˆ—ä»»åŠ¡
  * @author liweilin
  *
  */
 public interface IQueueTask
 {
     /**
-     * Ö´ĞĞ
+     * æ‰§è¡Œ
      *
      */
     void execute();

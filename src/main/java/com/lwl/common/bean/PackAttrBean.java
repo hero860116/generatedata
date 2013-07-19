@@ -1,50 +1,50 @@
 package com.lwl.common.bean;
 
 /**
- * °ü×°ÊôĞÔ<2ÊôĞÔ°æ>
- * ÓĞÊ±ºòĞèÒª½«Á½¸öÉõÖÁ¶à¸öÏà¹ØÊôĞÔ°ü×°µ½Ò»Æğ×öÎªÒ»×é£¬È»ºóÓÖÓĞ¶à×é½øĞĞ´«µİ´¦Àí
+ * åŒ…è£…å±æ€§<2å±æ€§ç‰ˆ>
+ * æœ‰æ—¶å€™éœ€è¦å°†ä¸¤ä¸ªç”šè‡³å¤šä¸ªç›¸å…³å±æ€§åŒ…è£…åˆ°ä¸€èµ·åšä¸ºä¸€ç»„ï¼Œç„¶ååˆæœ‰å¤šç»„è¿›è¡Œä¼ é€’å¤„ç†
  * @author Administrator
- * ÊôĞÔÖµ²»¿ÉÎªnull  Èç¹ûÓĞĞèÒªÔÙ¿¼ÂÇÈİ´í£¬µ±Ç°²»¿ÉÎªnull
+ * å±æ€§å€¼ä¸å¯ä¸ºnull  å¦‚æœæœ‰éœ€è¦å†è€ƒè™‘å®¹é”™ï¼Œå½“å‰ä¸å¯ä¸ºnull
  * @param <A>
  * @param <B>
  */
 public class PackAttrBean<A, B> {
-	private A a;
-	private B b;
-	
-	
-	public PackAttrBean(A a, B b) {
-		super();
-		this.a = a;
-		this.b = b;
-	}
-	
-	
-	
-	public PackAttrBean() {
-		super();
-	}
+    private A a;
+    private B b;
+
+
+    public PackAttrBean(A a, B b) {
+        super();
+        this.a = a;
+        this.b = b;
+    }
 
 
 
-	public A getA() {
-		return a;
-	}
-	public void setA(A a) {
-		this.a = a;
-	}
-	public B getB() {
-		return b;
-	}
-	public void setB(B b) {
-		this.b = b;
-	}
-	
-	public boolean equals(PackAttrBean<A,B> obj) {
-		if (a.equals(obj.getA()) && b.equals(obj.getB())) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+    public PackAttrBean() {
+        super();
+    }
+
+
+
+    public A getA() {
+        return a;
+    }
+    public void setA(A a) {
+        this.a = a;
+    }
+    public B getB() {
+        return b;
+    }
+    public void setB(B b) {
+        this.b = b;
+    }
+
+    public boolean equals(PackAttrBean<A,B> obj) {
+        if (a.equals(obj.getA()) && b.equals(obj.getB())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

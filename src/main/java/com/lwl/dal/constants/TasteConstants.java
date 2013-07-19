@@ -4,141 +4,141 @@ import java.util.Arrays;
 import java.util.List;
 
 public class TasteConstants {
-	
-	/**
-	 * ÍË¶©×î´óÊ±¼ä  (ÃëÊı)
-	 * Ò²ÊÇ½áÊø¶©µ¥µÄ´òÓ¡Ê±¼ä
-	 */
-	public static final NumberConstants<Integer> unsubscribeIntervalNumber = createNumber(2*60, "2·ÖÖÓ");
-	
-	/**
-	 * ¼°Ê±ËÍ²Í£¬µÈ¼ÛÔ¤¶¨µÄÆ«ÒÆÊ±¼ä
-	 */
-	public static final NumberConstants<Integer> MIGRATIONSECENDS = createNumber(40*60, "40·ÖÖÓ");
-	
-	/**
-	 * ½øĞĞÖĞµÃ¶©²Í£¬Àë²Íµ½¶àÉÙÊ±¼äºóÍ£Ö¹¶©²Í(ÃëÊı)
-	 */
-	public static final int inOrderOverseconds = 20 * 60;
-	
-	/**
-	 * ×îºóÒ»¸öÈËµã²Í£¬¶©µ¥µÄ×î´ó³¬³µÁ¾
-	 */
-	public static final int maxOrderExtendSize = 5;
-	
-	/**
-	 * Æğ²½¾àÀë£¬2.5¹«ÀïÊÕÈ¡3ÔªÍâËÍ·Ñ
-	 */
-	public static final double STARTING_DISTANCE = 2.5;
-	
-	/**
-	 * ³¬¹ı2¹«Àï²¿·Ö£¬Ã¿¹«Àï¼ÓÊÕ2ÔªÍâËÍ·Ñ
-	 */
-	public static final double CONST_EVERY_MILE= 2;
-	
-	/**
-	 * ×î½ü5ÌìµÄÀúÊ·¼ÇÂ¼
-	 */
-	public static final int recentOrderDays = 5;
-	
-	/**
-	 * ¼à¶½µç»°
-	 */
-	public static String supervisionPhone = "400-0571-157";
-	
-	/**
-	 * ¿Í·şµç»°
-	 */
-	public static String customerPhone = "400-0571-157";
-	
-	/**
-	 * ÍøÕ¾µØÖ·
-	 */
-	public static final String webSite = "www.juwaimai.com";
-	
-	
-	/**
-	 * ÓÊ¼şĞÅÏ¢
-	 */
-	//public static final String MAIL_HOST = "smtp.gmail.com";
-	//public static final int MAIL_PORT = 465;
-	//public static final String MAIL_USERNAME  = "juwaimai@gmail.com";
-	//public static final String MAIL_PASSWORD = "517juwaimai";
-	public static final String MAIL_HOST = "smtp.163.com";
-	public static final int MAIL_PORT =25;
-	public static final String MAIL_USERNAME  = "juwaimai@163.com";
-	public static final String MAIL_PASSWORD = "517juwaimai";
-	
-	/**
-	 * sinaÎ¢²©µÇÂ¼ĞÅÏ¢
-	 */
-	public static final String SINA_LOGINURI = "https://api.t.sina.com.cn/oauth2/authorize";
-	public static final String SINA_GETUID = "https://api.weibo.com/2/account/get_uid.json";
-	public static final String SINA_GETACCESSTOKEN = "https://api.weibo.com/oauth2/access_token";
-	public static final String SINA_SHOWUSER = "https://api.weibo.com/2/users/show.json";
-	public static final String SINA_CLIENT_ID = "2974140750";
-	public static final String SINA_CLIENT_SECRET = "471e4dfb41e0e45991ef7c2a7340aac5";
-	public static final String SINA_REDIRECT_URI = "http://www.juwaimai.com/sinaweibo.htm";
-	
-	
-	/**
-	 * ip½âÎöĞÅÏ¢
-	 */
-	public static final String IP_DATANAME = "qqwry.dat";
-	//public static final String IP_DATAPATH = "C:/ip";
-	public static final String IP_DATAPATH = "/home/lwl/data";
-	
-	/**
-	 * Ê³ÎïÁĞ±í·ÖÒ³ÊıÁ¿
-	 */
-	public static final int PAGESIZE_FOOD = 20;
-	
-	/**
-	 * ËÑË÷Ê³ÎïÁĞ±í·ÖÒ³ÊıÁ¿
-	 */
-	public static final int PAGESIZE_SEARCH_FOOD = 20;
-	
-	/**
-	 * ¼°Ê±ËÍ²ÍÄ¬ÈÏÊ±¼äÂë
-	 */
-	public static final String TIMELY_SEND = "00:00";
-	
 
-	/**
-	 * Ä¬ÈÏ·Ö¸ô·û (¿Õ¸ñ)
-	 */
-	public static final String SEPARATOR = " ";
-	
-	public static final String SINAWEIBO_INIT_PASSWORD = "123456";
-	
-	public static final String MIFAN = "Ã×·¹";
-	
-	/**
-	 * ·ÇÖ÷²Ë£¬¸¨²ËÀà,¼Æ²Ëµ¹ÊıÊÇÊ¹ÓÃ
-	 */
-	public static final List<String> NO_FOOD_LIST = Arrays.asList("Ã×·¹", "ºÉ°üµ°");
-	
-	public static final String NONE_COVER_IMAGE_PATH = "/statics/images/none.jpg";
-	
-	public String getSupervisionPhone() {
-		return supervisionPhone;
-	}
+    /**
+     * é€€è®¢æœ€å¤§æ—¶é—´  (ç§’æ•°)
+     * ä¹Ÿæ˜¯ç»“æŸè®¢å•çš„æ‰“å°æ—¶é—´
+     */
+    public static final NumberConstants<Integer> unsubscribeIntervalNumber = createNumber(2*60, "2åˆ†é’Ÿ");
 
-	public String getCustomerPhone() {
-		return customerPhone;
-	}
-	
-	/**
-	 * ´´½¨³£Á¿¶ÔÏó
-	 * @param <T>
-	 * @param value
-	 * @param message
-	 * @return
-	 */
-	private static <T> NumberConstants<T> createNumber(T value, String message) {
-		NumberConstants<T> number = new NumberConstants<T>();
-		number.setMessage(message);
-		number.setValue(value);
-		return number;
-	}
+    /**
+     * åŠæ—¶é€é¤ï¼Œç­‰ä»·é¢„å®šçš„åç§»æ—¶é—´
+     */
+    public static final NumberConstants<Integer> MIGRATIONSECENDS = createNumber(40*60, "40åˆ†é’Ÿ");
+
+    /**
+     * è¿›è¡Œä¸­å¾—è®¢é¤ï¼Œç¦»é¤åˆ°å¤šå°‘æ—¶é—´ååœæ­¢è®¢é¤(ç§’æ•°)
+     */
+    public static final int inOrderOverseconds = 20 * 60;
+
+    /**
+     * æœ€åä¸€ä¸ªäººç‚¹é¤ï¼Œè®¢å•çš„æœ€å¤§è¶…è½¦è¾†
+     */
+    public static final int maxOrderExtendSize = 5;
+
+    /**
+     * èµ·æ­¥è·ç¦»ï¼Œ2.5å…¬é‡Œæ”¶å–3å…ƒå¤–é€è´¹
+     */
+    public static final double STARTING_DISTANCE = 2.5;
+
+    /**
+     * è¶…è¿‡2å…¬é‡Œéƒ¨åˆ†ï¼Œæ¯å…¬é‡ŒåŠ æ”¶2å…ƒå¤–é€è´¹
+     */
+    public static final double CONST_EVERY_MILE= 2;
+
+    /**
+     * æœ€è¿‘5å¤©çš„å†å²è®°å½•
+     */
+    public static final int recentOrderDays = 5;
+
+    /**
+     * ç›‘ç£ç”µè¯
+     */
+    public static String supervisionPhone = "400-0571-157";
+
+    /**
+     * å®¢æœç”µè¯
+     */
+    public static String customerPhone = "400-0571-157";
+
+    /**
+     * ç½‘ç«™åœ°å€
+     */
+    public static final String webSite = "www.juwaimai.com";
+
+
+    /**
+     * é‚®ä»¶ä¿¡æ¯
+     */
+    //public static final String MAIL_HOST = "smtp.gmail.com";
+    //public static final int MAIL_PORT = 465;
+    //public static final String MAIL_USERNAME  = "juwaimai@gmail.com";
+    //public static final String MAIL_PASSWORD = "517juwaimai";
+    public static final String MAIL_HOST = "smtp.163.com";
+    public static final int MAIL_PORT =25;
+    public static final String MAIL_USERNAME  = "juwaimai@163.com";
+    public static final String MAIL_PASSWORD = "517juwaimai";
+
+    /**
+     * sinaå¾®åšç™»å½•ä¿¡æ¯
+     */
+    public static final String SINA_LOGINURI = "https://api.t.sina.com.cn/oauth2/authorize";
+    public static final String SINA_GETUID = "https://api.weibo.com/2/account/get_uid.json";
+    public static final String SINA_GETACCESSTOKEN = "https://api.weibo.com/oauth2/access_token";
+    public static final String SINA_SHOWUSER = "https://api.weibo.com/2/users/show.json";
+    public static final String SINA_CLIENT_ID = "2974140750";
+    public static final String SINA_CLIENT_SECRET = "471e4dfb41e0e45991ef7c2a7340aac5";
+    public static final String SINA_REDIRECT_URI = "http://www.juwaimai.com/sinaweibo.htm";
+
+
+    /**
+     * ipè§£æä¿¡æ¯
+     */
+    public static final String IP_DATANAME = "qqwry.dat";
+    //public static final String IP_DATAPATH = "C:/ip";
+    public static final String IP_DATAPATH = "/home/lwl/data";
+
+    /**
+     * é£Ÿç‰©åˆ—è¡¨åˆ†é¡µæ•°é‡
+     */
+    public static final int PAGESIZE_FOOD = 20;
+
+    /**
+     * æœç´¢é£Ÿç‰©åˆ—è¡¨åˆ†é¡µæ•°é‡
+     */
+    public static final int PAGESIZE_SEARCH_FOOD = 20;
+
+    /**
+     * åŠæ—¶é€é¤é»˜è®¤æ—¶é—´ç 
+     */
+    public static final String TIMELY_SEND = "00:00";
+
+
+    /**
+     * é»˜è®¤åˆ†éš”ç¬¦ (ç©ºæ ¼)
+     */
+    public static final String SEPARATOR = " ";
+
+    public static final String SINAWEIBO_INIT_PASSWORD = "123456";
+
+    public static final String MIFAN = "ç±³é¥­";
+
+    /**
+     * éä¸»èœï¼Œè¾…èœç±»,è®¡èœå€’æ•°æ˜¯ä½¿ç”¨
+     */
+    public static final List<String> NO_FOOD_LIST = Arrays.asList("ç±³é¥­", "è·åŒ…è›‹");
+
+    public static final String NONE_COVER_IMAGE_PATH = "/statics/images/none.jpg";
+
+    public String getSupervisionPhone() {
+        return supervisionPhone;
+    }
+
+    public String getCustomerPhone() {
+        return customerPhone;
+    }
+
+    /**
+     * åˆ›å»ºå¸¸é‡å¯¹è±¡
+     * @param <T>
+     * @param value
+     * @param message
+     * @return
+     */
+    private static <T> NumberConstants<T> createNumber(T value, String message) {
+        NumberConstants<T> number = new NumberConstants<T>();
+        number.setMessage(message);
+        number.setValue(value);
+        return number;
+    }
 }

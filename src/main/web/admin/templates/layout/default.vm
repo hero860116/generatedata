@@ -1,176 +1,176 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="gbk" />
-		<title>¾ÛÍâÂô - ÌùĞÄÍâÂô·şÎñ</title>
-		<link rel="stylesheet" type="text/css" href="$staticsContent.getURI('css/common.css')?t=1" >
-		<script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/jquery-1.6.4.min.js')" ></script>
-		<!--¿ò¼Ü±ØĞèstart-->
-		<link href="$staticsContent.getURI('qui/libs/css/import_basic.css')" rel="stylesheet" type="text/css"/>
-		<link href="$staticsContent.getURI('qui/libs/skins/blue/style.css')" rel="stylesheet" type="text/css"/>
-		<link href="$staticsContent.getURI('qui/system/layout/skin/style.css')" rel="stylesheet" type="text/css"/>
-		<script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/bsFormat.js')"></script>
-		<!--¿ò¼Ü±ØĞèend-->
-		<!--ÒıÈëµ¯´°×é¼şstart-->
-		<script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/popup/drag.js')"></script>
-		<script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/popup/dialog.js')"></script>
-		<!--ÒıÈëµ¯´°×é¼şend-->
-		<!--·Ö¸ôÌõstart-->
-		<script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/nav/spliter.js')"></script>
-		<!--·Ö¸ôÌõend-->
-		<script>
-			function bookmarksite(title, url){
-				if (window.sidebar)
-					// firefox
-				window.sidebar.addPanel(title, url, "");
-				else
-				if (window.opera && window.print){
-					// opera
-					var elem = document.createElement('a');
-					elem.setAttribute('href', url);
-					elem.setAttribute('title', title);
-					elem.setAttribute('rel', 'sidebar');
-					elem.click();
-				}
-				else
-				if (document.all)
-				// ie
-				window.external.AddFavorite(url, title);
-			}
-			function exitHandler(){
-				top.Dialog.confirm("È·¶¨ÒªÍË³öÏµÍ³Âğ",function(){}
-				);
-			}
-		</script>
-	</head>
+<head>
+    <meta charset="utf-8" />
+    <title>èšå¤–å– - è´´å¿ƒå¤–å–æœåŠ¡</title>
+    <link rel="stylesheet" type="text/css" href="$staticsContent.getURI('css/common.css')?t=1" >
+    <script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/jquery-1.6.4.min.js')" ></script>
+    <!--æ¡†æ¶å¿…éœ€start-->
+    <link href="$staticsContent.getURI('qui/libs/css/import_basic.css')" rel="stylesheet" type="text/css"/>
+    <link href="$staticsContent.getURI('qui/libs/skins/blue/style.css')" rel="stylesheet" type="text/css"/>
+    <link href="$staticsContent.getURI('qui/system/layout/skin/style.css')" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/bsFormat.js')"></script>
+    <!--æ¡†æ¶å¿…éœ€end-->
+    <!--å¼•å…¥å¼¹çª—ç»„ä»¶start-->
+    <script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/popup/drag.js')"></script>
+    <script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/popup/dialog.js')"></script>
+    <!--å¼•å…¥å¼¹çª—ç»„ä»¶end-->
+    <!--åˆ†éš”æ¡start-->
+    <script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/nav/spliter.js')"></script>
+    <!--åˆ†éš”æ¡end-->
+    <script>
+        function bookmarksite(title, url){
+            if (window.sidebar)
+            // firefox
+                window.sidebar.addPanel(title, url, "");
+            else
+            if (window.opera && window.print){
+                // opera
+                var elem = document.createElement('a');
+                elem.setAttribute('href', url);
+                elem.setAttribute('title', title);
+                elem.setAttribute('rel', 'sidebar');
+                elem.click();
+            }
+            else
+            if (document.all)
+            // ie
+                window.external.AddFavorite(url, title);
+        }
+        function exitHandler(){
+            top.Dialog.confirm("ç¡®å®šè¦é€€å‡ºç³»ç»Ÿå—",function(){}
+            );
+        }
+    </script>
+</head>
 <body>
-	<div id="mainFrame">
-		<!--Í·²¿Óëµ¼º½start-->
-		<div id="hbox">
-            <!--
-			<div id="bs_bannercenter">
-				<div id="bs_bannerleft">
-					<div id="bs_bannerright">
-					</div>
-				</div>
-			</div>
-			-->
-			<div id="bs_navcenter">
-				<div id="bs_navleft">
-					<div id="bs_navright">
-						<div class="bs_nav">
-							<div class="bs_navleft">
-								<li class="fontTitle">×ÖºÅ:</li>
-								<li class="fontChange"><span><a href="javascript:;" setFont="16">´ó</a></span></li>
-								<li class="fontChange"><span><a href="javascript:;" setFont="14">ÖĞ</a></span></li>
-								<li class="fontChange"><span><a href="javascript:;" setFont="12">Ğ¡</a></span></li>
-								<div class="clear"></div>
-							</div>
-							<div class="float_left padding_top2 padding_left5">
-								¡¾½ñÌìÊÇ
-								<script>
-									var weekDayLabels = new Array("ĞÇÆÚÈÕ","ĞÇÆÚÒ»","ĞÇÆÚ¶ş","ĞÇÆÚÈı","ĞÇÆÚËÄ","ĞÇÆÚÎå","ĞÇÆÚÁù");
-									var now = new Date();
-									var year=now.getFullYear();
-									var month=now.getMonth()+1;
-									var day=now.getDate()
-									var currentime = year+"Äê"+month+"ÔÂ"+day+"ÈÕ "+weekDayLabels[now.getDay()]
-									document.write(currentime)
-								</script>
-								¡¿
-							</div>
-							<div class="float_right padding_top2 padding_right5">
-								<span class="icon_fullscreen hand" id="fullSrceen" hideNav="true">¿ªÆôÈ«ÆÁ</span>
-								<span class="icon_no hand" onclick='top.Dialog.confirm("È·¶¨ÒªÍË³öÏµÍ³Âğ",function(){window.location="../../userAction.do?method=logout"});'>ÍË³öÏµÍ³</span>
-							</div>
-							<div class="clear"></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--Í·²¿Óëµ¼º½end-->
-		<table width="100%" cellpadding="0" cellspacing="0" class="table_border0">
-			<tr>
-				<!--×ó²àÇøÓòstart-->
-				<td id="hideCon" class="ver01 ali01">
-					<div id="lbox">
-						<div id="lbox_topcenter">
-							<div id="lbox_topleft">
-								<div id="lbox_topright">
-								</div>
-							</div>
-						</div>
-						<div id="lbox_middlecenter">
-							<div id="lbox_middleleft">
-								<div id="lbox_middleright">
-									<div id="bs_left">
-										<IFRAME scrolling="no" width="100%" height="100%"  frameBorder="0" id="frmleft" name="frmleft" src="$adminModule.setTarget('quiLeft.vm')"  allowTransparency="true"></IFRAME>
-									</div>
-									<!--¸ü¸Ä×ó²àÀ¸µÄ¿í¶ÈĞèÒªĞŞ¸Äid="bs_left"µÄÑùÊ½-->
-								</div>
-							</div>
-						</div>
-						<div id="lbox_bottomcenter">
-							<div id="lbox_bottomleft">
-								<div id="lbox_bottomright">
-									<div class="lbox_foot"></div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</td>
-				<!--×ó²àÇøÓòend-->
-				<!--·Ö¸ôÀ¸ÇøÓòstart-->
-				<td class="spliter main_shutiao" targetId="hideCon" beforeClickTip="ÊÕËõÃæ°å" afterClickTip="Õ¹¿ªÃæ°å" beforeClickClass="bs_leftArr" afterClickClass="bs_rightArr">
-				</td>
-				<!--·Ö¸ôÀ¸ÇøÓòend-->
-				<!--ÓÒ²àÇøÓòstart-->
-				<td class="ali01 ver01"  width="100%">
-					<div id="rbox">
-						<div id="rbox_topcenter">
-							<div id="rbox_topleft">
-								<div id="rbox_topright">
-								</div>
-							</div>
-						</div>
-						<div id="rbox_middlecenter">
-							<div id="rbox_middleleft">
-								<div id="rbox_middleright">
-									<div id="bs_right">
-										<IFRAME scrolling="no" width="100%" height="100%" frameBorder=0 id=frmright name=frmright src=""  allowTransparency="true"></IFRAME>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div id="rbox_bottomcenter" >
-							<div id="rbox_bottomleft">
-								<div id="rbox_bottomright">
-								</div>
-							</div>
-						</div>
-					</div>
-				</td>
-				<!--ÓÒ²àÇøÓòend-->
-			</tr>
-		</table>
-		<!--Î²²¿ÇøÓòstart-->
-		<div id="fbox">
-			<div id="bs_footcenter">
-				<div id="bs_footleft">
-					<div id="bs_footright">
-						°æÈ¨ËùÓĞ£ºhttp://www.juwaimai.com
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--Î²²¿ÇøÓòend-->
-	<!--ä¯ÀÀÆ÷resizeÊÂ¼şĞŞÕıstart-->
-	<div id="resizeFix"></div>
-	<!--ä¯ÀÀÆ÷resizeÊÂ¼şĞŞÕıend-->
-	<!--ÔØ½ø¶ÈÌõstart-->
-	<div class="progressBg" id="progress" style="display:none;"><div class="progressBar"></div></div>
-	<!--ÔØ½ø¶ÈÌõend-->
+<div id="mainFrame">
+    <!--å¤´éƒ¨ä¸å¯¼èˆªstart-->
+    <div id="hbox">
+        <!--
+        <div id="bs_bannercenter">
+            <div id="bs_bannerleft">
+                <div id="bs_bannerright">
+                </div>
+            </div>
+        </div>
+        -->
+        <div id="bs_navcenter">
+            <div id="bs_navleft">
+                <div id="bs_navright">
+                    <div class="bs_nav">
+                        <div class="bs_navleft">
+                            <li class="fontTitle">å­—å·:</li>
+                            <li class="fontChange"><span><a href="javascript:;" setFont="16">å¤§</a></span></li>
+                            <li class="fontChange"><span><a href="javascript:;" setFont="14">ä¸­</a></span></li>
+                            <li class="fontChange"><span><a href="javascript:;" setFont="12">å°</a></span></li>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="float_left padding_top2 padding_left5">
+                            ã€ä»Šå¤©æ˜¯
+                            <script>
+                                var weekDayLabels = new Array("æ˜ŸæœŸæ—¥","æ˜ŸæœŸä¸€","æ˜ŸæœŸäºŒ","æ˜ŸæœŸä¸‰","æ˜ŸæœŸå››","æ˜ŸæœŸäº”","æ˜ŸæœŸå…­");
+                                var now = new Date();
+                                var year=now.getFullYear();
+                                var month=now.getMonth()+1;
+                                var day=now.getDate()
+                                var currentime = year+"å¹´"+month+"æœˆ"+day+"æ—¥ "+weekDayLabels[now.getDay()]
+                                document.write(currentime)
+                            </script>
+                            ã€‘
+                        </div>
+                        <div class="float_right padding_top2 padding_right5">
+                            <span class="icon_fullscreen hand" id="fullSrceen" hideNav="true">å¼€å¯å…¨å±</span>
+                            <span class="icon_no hand" onclick='top.Dialog.confirm("ç¡®å®šè¦é€€å‡ºç³»ç»Ÿå—",function(){window.location="../../userAction.do?method=logout"});'>é€€å‡ºç³»ç»Ÿ</span>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--å¤´éƒ¨ä¸å¯¼èˆªend-->
+    <table width="100%" cellpadding="0" cellspacing="0" class="table_border0">
+        <tr>
+            <!--å·¦ä¾§åŒºåŸŸstart-->
+            <td id="hideCon" class="ver01 ali01">
+                <div id="lbox">
+                    <div id="lbox_topcenter">
+                        <div id="lbox_topleft">
+                            <div id="lbox_topright">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="lbox_middlecenter">
+                        <div id="lbox_middleleft">
+                            <div id="lbox_middleright">
+                                <div id="bs_left">
+                                    <IFRAME scrolling="no" width="100%" height="100%"  frameBorder="0" id="frmleft" name="frmleft" src="$adminModule.setTarget('quiLeft.vm')"  allowTransparency="true"></IFRAME>
+                                </div>
+                                <!--æ›´æ”¹å·¦ä¾§æ çš„å®½åº¦éœ€è¦ä¿®æ”¹id="bs_left"çš„æ ·å¼-->
+                            </div>
+                        </div>
+                    </div>
+                    <div id="lbox_bottomcenter">
+                        <div id="lbox_bottomleft">
+                            <div id="lbox_bottomright">
+                                <div class="lbox_foot"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <!--å·¦ä¾§åŒºåŸŸend-->
+            <!--åˆ†éš”æ åŒºåŸŸstart-->
+            <td class="spliter main_shutiao" targetId="hideCon" beforeClickTip="æ”¶ç¼©é¢æ¿" afterClickTip="å±•å¼€é¢æ¿" beforeClickClass="bs_leftArr" afterClickClass="bs_rightArr">
+            </td>
+            <!--åˆ†éš”æ åŒºåŸŸend-->
+            <!--å³ä¾§åŒºåŸŸstart-->
+            <td class="ali01 ver01"  width="100%">
+                <div id="rbox">
+                    <div id="rbox_topcenter">
+                        <div id="rbox_topleft">
+                            <div id="rbox_topright">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="rbox_middlecenter">
+                        <div id="rbox_middleleft">
+                            <div id="rbox_middleright">
+                                <div id="bs_right">
+                                    <IFRAME scrolling="no" width="100%" height="100%" frameBorder=0 id=frmright name=frmright src=""  allowTransparency="true"></IFRAME>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="rbox_bottomcenter" >
+                        <div id="rbox_bottomleft">
+                            <div id="rbox_bottomright">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <!--å³ä¾§åŒºåŸŸend-->
+        </tr>
+    </table>
+    <!--å°¾éƒ¨åŒºåŸŸstart-->
+    <div id="fbox">
+        <div id="bs_footcenter">
+            <div id="bs_footleft">
+                <div id="bs_footright">
+                    ç‰ˆæƒæ‰€æœ‰ï¼šhttp://www.juwaimai.com
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--å°¾éƒ¨åŒºåŸŸend-->
+<!--æµè§ˆå™¨resizeäº‹ä»¶ä¿®æ­£start-->
+<div id="resizeFix"></div>
+<!--æµè§ˆå™¨resizeäº‹ä»¶ä¿®æ­£end-->
+<!--è½½è¿›åº¦æ¡start-->
+<div class="progressBg" id="progress" style="display:none;"><div class="progressBar"></div></div>
+<!--è½½è¿›åº¦æ¡end-->
 </body>
 </html>

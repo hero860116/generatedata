@@ -1,32 +1,32 @@
-<table id="mytab"  border="1" class="t3">  
-  <thead>  
-	<th width="15%">ÀàĞÍ</th>
-	<th width="15%">Ê³Îï</th>
-	<th width="15%">µêÆÌ</th>
-	<th width="20%">Î»ÖÃ</th>
-	<th width="20%">Àà±ğÎ»ÖÃ</th>
-	<th width="15%">²Ù×÷</th>
-  </thead>  
+<table id="mytab"  border="1" class="t3">
+    <thead>
+    <th width="15%">ç±»å‹</th>
+    <th width="15%">é£Ÿç‰©</th>
+    <th width="15%">åº—é“º</th>
+    <th width="20%">ä½ç½®</th>
+    <th width="20%">ç±»åˆ«ä½ç½®</th>
+    <th width="15%">æ“ä½œ</th>
+    </thead>
     #foreach($foodSetPromotionDOs in $foodSetPromotionDOsList)
-		#foreach($foodSetPromotionDO in $foodSetPromotionDOs)
-        <tr class="a1">
-			#if(${velocityCount} == 1)
-    		<td rowspan="$foodSetPromotionDOs.size()">$!foodSetPromotionDO.getTypeMessage()</td>
-			#end
-    		<td>$!foodSetPromotionDO.foodDO.name</td> 
-    		<td>$!foodSetPromotionDO.shopDO.name</td> 
-            <td>$!foodSetPromotionDO.indexf[<a href="$!{adminModule}/update.htm?action=food_set_promotion_action&event_submit_do_update_indexf=1&id=$!foodSetPromotionDO.id" class="modifyIndexf smallLink">ĞŞ¸Ä</a>]</td>
-            #if(${velocityCount} == 1)
-			<td rowspan="$foodSetPromotionDOs.size()">$!foodSetPromotionDO.typeIndex[<a href="$!{adminModule}/update.htm?action=food_set_promotion_action&event_submit_doUpdateTypeIndex=1&type=$!foodSetPromotionDO.type&structureType=$!foodSetPromotionDO.structureType&structureId=$!foodSetPromotionDO.structureId" class="modifyTypeIndex smallLink">ĞŞ¸Ä</a>]</td>
-			#end
-			<td>
-        		<a href="$!{adminModule}/delete.htm?action=food_set_promotion_action&event_submit_do_delete=1&id=$!foodSetPromotionDO.id" class="smallLink">É¾³ı</a>	
-    		</td>
-        </tr> 
-		#end
-    #end	
-</table>  
+        #foreach($foodSetPromotionDO in $foodSetPromotionDOs)
+            <tr class="a1">
+                #if(${velocityCount} == 1)
+                    <td rowspan="$foodSetPromotionDOs.size()">$!foodSetPromotionDO.getTypeMessage()</td>
+                #end
+                <td>$!foodSetPromotionDO.foodDO.name</td>
+                <td>$!foodSetPromotionDO.shopDO.name</td>
+                <td>$!foodSetPromotionDO.indexf[<a href="$!{adminModule}/update.htm?action=food_set_promotion_action&event_submit_do_update_indexf=1&id=$!foodSetPromotionDO.id" class="modifyIndexf smallLink">ä¿®æ”¹</a>]</td>
+                #if(${velocityCount} == 1)
+                    <td rowspan="$foodSetPromotionDOs.size()">$!foodSetPromotionDO.typeIndex[<a href="$!{adminModule}/update.htm?action=food_set_promotion_action&event_submit_doUpdateTypeIndex=1&type=$!foodSetPromotionDO.type&structureType=$!foodSetPromotionDO.structureType&structureId=$!foodSetPromotionDO.structureId" class="modifyTypeIndex smallLink">ä¿®æ”¹</a>]</td>
+                #end
+                <td>
+                    <a href="$!{adminModule}/delete.htm?action=food_set_promotion_action&event_submit_do_delete=1&id=$!foodSetPromotionDO.id" class="smallLink">åˆ é™¤</a>
+                </td>
+            </tr>
+        #end
+    #end
+</table>
 <script >
-	$(".modifyIndexf").modify('ÊäÈëĞÂÖµ:',{"name":"indexf"});
-	$(".modifyTypeIndex").modify('ÊäÈëĞÂÖµ:',{"name":"typeIndex"});
-</script>		
+    $(".modifyIndexf").modify('è¾“å…¥æ–°å€¼:',{"name":"indexf"});
+    $(".modifyTypeIndex").modify('è¾“å…¥æ–°å€¼:',{"name":"typeIndex"});
+</script>

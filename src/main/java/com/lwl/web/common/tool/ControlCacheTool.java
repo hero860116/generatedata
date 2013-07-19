@@ -9,10 +9,10 @@ public class ControlCacheTool extends ControlTool {/*
 	private String phth = "";
 
 	private int expireTime = DEFAULT_EXPIRE_TIME;
-	
+
 	*//**
-	 * 通过设置参数刷新缓存
-	 *//*
+ * 閫氳繃璁剧疆鍙傛暟鍒锋柊缂撳瓨
+ *//*
 	private boolean paramRefreshCache = false;
 
 	@Resource
@@ -33,16 +33,16 @@ public class ControlCacheTool extends ControlTool {/*
 		return super.setParameter(name, value);
 	}
 
-	public ControlTool setParamRefreshCache(boolean paramRefreshCache) { // 秒为单位
+	public ControlTool setParamRefreshCache(boolean paramRefreshCache) { // 绉掍负鍗曚綅
 		this.paramRefreshCache = paramRefreshCache;
 		return this;
 	}
-	
-	public ControlTool setExpireTime(int expireTime) { // 秒为单位
+
+	public ControlTool setExpireTime(int expireTime) { // 绉掍负鍗曚綅
 		this.expireTime = expireTime;
 		return this;
 	}
-	
+
 	@Override
 	public String render() {
 		try {

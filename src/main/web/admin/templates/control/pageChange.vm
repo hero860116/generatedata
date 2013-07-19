@@ -1,7 +1,7 @@
 <link href="$staticsContent.getURI('css/page.css')?t=100006" rel="stylesheet" type="text/css">
-## ×ÜÒ³Êı
+## æ€»é¡µæ•°
 #set($tPage=$query.totalPage)
-## µ±Ç°Ò³
+## å½“å‰é¡µ
 #set($cPage=$query.currentPage)
 
 
@@ -12,88 +12,88 @@
 #set($nextPage=$cPage+1)
 
 #if($midminpage<1)
-	#set($midminpage=1)
+    #set($midminpage=1)
 #end
 #if($midmaxpage>$tPage)
-	#set($midmaxpage=$tPage)
+    #set($midmaxpage=$tPage)
 #end
 #if($nextPage>$tPage)
-	#set($midmaxpage=$tPage)
+    #set($midmaxpage=$tPage)
 #end
 #set($prepiont=true)
 #set($aftpiont=true)
 #set($prevPage=$cPage+(-1))
 #if($query)
-	#set($prevPage="$pageTool.paging($prevPage)")
+    #set($prevPage="$pageTool.paging($prevPage)")
     #set($nextPage="$pageTool.paging($nextPage)")
 #end
 
 
-##½ÓÏÂÀ´ÊÇÒ³ÃæHTML½á¹¹
+##æ¥ä¸‹æ¥æ˜¯é¡µé¢HTMLç»“æ„
 
-##ÉÏÒ»Ò³
+##ä¸Šä¸€é¡µ
 #if($cPage > 1)
-	<a href="$prevPage" class="page-prev page:id"><span>ÉÏÒ»Ò³</span></a><!--ÉÏÒ»Ò³-->
+<a href="$prevPage" class="page-prev page:id"><span>ä¸Šä¸€é¡µ</span></a><!--ä¸Šä¸€é¡µ-->
 #end
-##ÖĞ¼äÒ³Âë	
+##ä¸­é—´é¡µç 
 #foreach($p in [1..${tPage}])
-	#if($p<$minpage||$p>$maxpage||($p>$midminpage && $p<$midmaxpage))
-		#if($p==$cPage)
-			<span class="current">$cPage</span>
-		#else
-			<a href="$pageTool.paging($p)" class="page:id">$p</a>
-		#end
-	#else
-		#if($prepiont&&$p<=$midminpage)
-			#set($prepiont=false)
-			<span class="page-break">...</span>
-		#elseif($aftpiont&&$p>=$midmaxpage)
-			#set($aftpiont=false)
-			<span class="page-break">...</span>
-		#end
-	#end
+    #if($p<$minpage||$p>$maxpage||($p>$midminpage && $p<$midmaxpage))
+        #if($p==$cPage)
+        <span class="current">$cPage</span>
+        #else
+        <a href="$pageTool.paging($p)" class="page:id">$p</a>
+        #end
+    #else
+        #if($prepiont&&$p<=$midminpage)
+            #set($prepiont=false)
+        <span class="page-break">...</span>
+        #elseif($aftpiont&&$p>=$midmaxpage)
+            #set($aftpiont=false)
+        <span class="page-break">...</span>
+        #end
+    #end
 #end
-##ÏÂÒ»Ò³
+##ä¸‹ä¸€é¡µ
 #if($cPage < $tPage)
-	<a class="page-next" href="$nextPage"><span>ÏÂÒ»Ò³</span></a><!--ÏÂÒ»Ò³-->
+<a class="page-next" href="$nextPage"><span>ä¸‹ä¸€é¡µ</span></a><!--ä¸‹ä¸€é¡µ-->
 #end
 
 <span class="page-skip">
-    ¹²$!{tPage}Ò³
-    µ½µÚ<input type="text" name="page" size="3" generationType="$query.currentPage" onkeyup="if(event.keyCode==13) jumpPage(this.value);"/>Ò³
-    <button type="button" onclick="jumpPage(this.parentNode.getElementsByTagName('input')[0].value);">È·¶¨</button>
+    å…±$!{tPage}é¡µ
+    åˆ°ç¬¬<input type="text" name="page" size="3" generationType="$query.currentPage" onkeyup="if(event.keyCode==13) jumpPage(this.value);"/>é¡µ
+    <button type="button" onclick="jumpPage(this.parentNode.getElementsByTagName('input')[0].value);">ç¡®å®š</button>
 </span>
-		
-#if(!$noscript)		##Ö»¼ÓÔØÒ»´Î
+
+#if(!$noscript)		##åªåŠ è½½ä¸€æ¬¡
 <script type='text/javascript'>
-	var totalPage="$!securityUtil.jsEncode($!query.totalPage)";
-	//ÅĞ¶ÏÓÃ»§ÊäÈëµÄÒ³ÂëÊÇ·ñÔÚÇø¼ä[1,totalPage]
-	function resetPageNo(aPage){
-	  	if(!/^[0-9]+$/.test(aPage)){
-			return "1";
-		}
-		if(parseInt(aPage) <= 0) {
-			return "1";
-		}
-		if(parseInt(aPage) > parseInt(totalPage)){
-			return totalPage;
-		}
-		return aPage;
-	}
-	
-	function jumpPage(page) {
-		page = resetPageNo(page);
-		var href = location.href;
-		var start = href.indexOf('?page=') != -1 ? href.indexOf('?page=') : href.indexOf('&page=');
-		if (start == -1) {
-			href += (href.indexOf('?') == -1 ? '?' : '&') + 'page=' + page;
-		} else {
-			start += 6;
-			var end = href.indexOf('&', start);
-			href = href.substring(0, start) + page + (end != -1 ? href.substring(end) : '');
-		}
-		location.href = href;
-	}
+    var totalPage="$!securityUtil.jsEncode($!query.totalPage)";
+    //åˆ¤æ–­ç”¨æˆ·è¾“å…¥çš„é¡µç æ˜¯å¦åœ¨åŒºé—´[1,totalPage]
+    function resetPageNo(aPage){
+        if(!/^[0-9]+$/.test(aPage)){
+            return "1";
+        }
+        if(parseInt(aPage) <= 0) {
+            return "1";
+        }
+        if(parseInt(aPage) > parseInt(totalPage)){
+            return totalPage;
+        }
+        return aPage;
+    }
+
+    function jumpPage(page) {
+        page = resetPageNo(page);
+        var href = location.href;
+        var start = href.indexOf('?page=') != -1 ? href.indexOf('?page=') : href.indexOf('&page=');
+        if (start == -1) {
+            href += (href.indexOf('?') == -1 ? '?' : '&') + 'page=' + page;
+        } else {
+            start += 6;
+            var end = href.indexOf('&', start);
+            href = href.substring(0, start) + page + (end != -1 ? href.substring(end) : '');
+        }
+        location.href = href;
+    }
 </script>
 #end
 

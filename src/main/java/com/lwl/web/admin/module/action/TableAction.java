@@ -19,7 +19,7 @@ public class TableAction {
 
 
     public void doSave( @Param("tableName")String tableName,
-            Navigator nav, TurbineRunData rundata, Context context) throws Exception {
+                        Navigator nav, TurbineRunData rundata, Context context) throws Exception {
 
         TableDO tableDO = tableAO.getTableDO(tableName);
         ParameterParser pp = rundata.getParameters();

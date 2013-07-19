@@ -13,34 +13,34 @@ import com.lwl.common.producerconsumer.queue.MyQueue;
 import com.lwl.common.producerconsumer.thread.ConsumerThread;
 
 /**
- * ¶ÓÁĞ£¬Ïû·ÑÕß£¬·ÖÅäÆ÷ ¹ÜÀí
+ * é˜Ÿåˆ—ï¼Œæ¶ˆè´¹è€…ï¼Œåˆ†é…å™¨ ç®¡ç†
  * @author liweilin
  *
  */
 public class ManyQueueConsumerManager
 {
     /**
-     * ¶ÓÁĞMap
+     * é˜Ÿåˆ—Map
      */
     private Map<String, MyQueue<IManyQueueTask>> taskQueueMap = new ConcurrentHashMap<String, MyQueue<IManyQueueTask>>();
 
     /**
-     * ·ÖÅäÆ÷
+     * åˆ†é…å™¨
      */
     private AAssigner assigner;
 
     /**
-     * Éú²úÕßÏû·ÑÕßÃû³Æ
+     * ç”Ÿäº§è€…æ¶ˆè´¹è€…åç§°
      */
     private String name;
 
     /**
-     * Ïß³ÌÁĞ±í
+     * çº¿ç¨‹åˆ—è¡¨
      */
     private List<ConsumerThread> consumerThreads = new LinkedList<ConsumerThread>();
 
     /**
-     * 
+     *
      * @param queueSize
      * @param threadSize
      */
@@ -69,13 +69,13 @@ public class ManyQueueConsumerManager
     }
 
     /**
-     * Íù¶ÓÁĞÖĞÔö¼Ótask
-     * @param queueTask ¶ÓÁĞÈÎÎñ
-     * @param taskName  ÈÎÎñÃû³Æ
+     * å¾€é˜Ÿåˆ—ä¸­å¢åŠ task
+     * @param queueTask é˜Ÿåˆ—ä»»åŠ¡
+     * @param taskName  ä»»åŠ¡åç§°
      */
     public void putQueueTask(String taskId , IManyQueueTask task)
     {
-        //½«ÈÎÎñ¼ÓÈëÖ¸¶¨¶ÓÁĞ
+        //å°†ä»»åŠ¡åŠ å…¥æŒ‡å®šé˜Ÿåˆ—
         try
         {
             taskQueueMap.get(taskId).put(task);
@@ -84,29 +84,7 @@ public class ManyQueueConsumerManager
         {
         }
 
-        //»½ĞÑÏû·ÑÕßÏß³Ì
-        try
-        {
-            GlobalLock.getReentrantLock().lock();
-            GlobalLock.getCondition().signalAll();
-        }
-        finally
-        {
-            GlobalLock.getReentrantLock().unlock();
-        }
-    }
-    
-    /**
-     * Íù¶ÓÁĞÊ×²¿Ôö¼Ótask
-     * @param queueTask ¶ÓÁĞÈÎÎñ
-     * @param taskName  ÈÎÎñÃû³Æ
-     */
-    public void putFirstQueueTask(String taskId, IManyQueueTask queueTask)
-    {
-        //¼ÓÈë¶ÓÁĞÊ×£¬»ØÁ÷Ê¹ÓÃ
-        taskQueueMap.get(taskId).addFirst(queueTask);
-        
-        //»½ĞÑÏû·ÑÕßÏß³Ì
+        //å”¤é†’æ¶ˆè´¹è€…çº¿ç¨‹
         try
         {
             GlobalLock.getReentrantLock().lock();
@@ -119,11 +97,33 @@ public class ManyQueueConsumerManager
     }
 
     /**
-     * Íù¶ÓÁĞÖĞÔö¼ÓĞÂtask
+     * å¾€é˜Ÿåˆ—é¦–éƒ¨å¢åŠ task
+     * @param queueTask é˜Ÿåˆ—ä»»åŠ¡
+     * @param taskName  ä»»åŠ¡åç§°
+     */
+    public void putFirstQueueTask(String taskId, IManyQueueTask queueTask)
+    {
+        //åŠ å…¥é˜Ÿåˆ—é¦–ï¼Œå›æµä½¿ç”¨
+        taskQueueMap.get(taskId).addFirst(queueTask);
+
+        //å”¤é†’æ¶ˆè´¹è€…çº¿ç¨‹
+        try
+        {
+            GlobalLock.getReentrantLock().lock();
+            GlobalLock.getCondition().signalAll();
+        }
+        finally
+        {
+            GlobalLock.getReentrantLock().unlock();
+        }
+    }
+
+    /**
+     * å¾€é˜Ÿåˆ—ä¸­å¢åŠ æ–°task
      * @param <T>
-     * @param taskId    ÈÎÎñID
-     * @param size      ¶ÓÁĞ´óĞ¡
-     * @param taskInfo  ÈÎÎñĞÅÏ¢
+     * @param taskId    ä»»åŠ¡ID
+     * @param size      é˜Ÿåˆ—å¤§å°
+     * @param taskInfo  ä»»åŠ¡ä¿¡æ¯
      */
     public <T> void addNewTask(String taskId , int size , T taskInfo)
     {
@@ -132,10 +132,10 @@ public class ManyQueueConsumerManager
 
         try
         {
-            //Ôö¼Ó¶ÓÁĞ
+            //å¢åŠ é˜Ÿåˆ—
             taskQueueMap.put(taskId, new MyQueue<IManyQueueTask>(size));
-            
-            //Ôö¼ÓÈÎÎñĞÅÏ¢
+
+            //å¢åŠ ä»»åŠ¡ä¿¡æ¯
             assigner.addTaskInfo(taskId, taskInfo);
 
         }
@@ -146,27 +146,27 @@ public class ManyQueueConsumerManager
     }
 
     /**
-     * »ØÁ÷Ïß³ÌÈÎÎñ
+     * å›æµçº¿ç¨‹ä»»åŠ¡
      *
      */
     public void refluenceThreadTask()
     {
-        //Ñ­»·ËùÓĞÏß³Ì
+        //å¾ªç¯æ‰€æœ‰çº¿ç¨‹
         for (ConsumerThread consumerThread : consumerThreads)
         {
-            //»ñÈ¡Ïß³Ìµ±Ç°ÕıÔÚ´¦ÀíµÄÈÎÎñ
+            //è·å–çº¿ç¨‹å½“å‰æ­£åœ¨å¤„ç†çš„ä»»åŠ¡
             IManyQueueTask queueTask = consumerThread.getQueueTask();
-            
-            //Èç¹û¶ÓÁĞÖĞÈÎÎñ²»Îª¿Õ
+
+            //å¦‚æœé˜Ÿåˆ—ä¸­ä»»åŠ¡ä¸ä¸ºç©º
             if (queueTask != null)
             {
-                //Ö´ĞĞ»ØÁ÷
+                //æ‰§è¡Œå›æµ
                 queueTask.refluenceTask();
             }
         }
     }
 
-    
+
     public AAssigner getAssigner()
     {
         return assigner;

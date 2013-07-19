@@ -19,7 +19,6 @@ import java.util.Map;
  * Created with IntelliJ IDEA.
  * User: Administrator
  * Date: 13-7-7
- * Time: 上午11:00
  * To change this template use File | Settings | File Templates.
  */
 @Service("tableAO")
@@ -34,7 +33,6 @@ public class TableAOImpl implements TableAO {
     @Autowired
     private NumberIncreaseGenerator numberIncreaseGenerator;
 
-    @Override
     public TableDO getTableDO(String tableName) {
         TableDO tableDO = new TableDO();
         tableDO.setName(tableName);
@@ -42,15 +40,14 @@ public class TableAOImpl implements TableAO {
         return tableDAO.getTableDO(tableDO);
     }
 
-    @Override
+
     public void insert(TableDO tableDO) {
         //To change body of implemented methods use File | Settings | File Templates.
     }
 
-    @Override
+
     public void batchInsert(TableDO tableDO) {
 
-        //按配置规则生成变量
         List<FieldDO> fieldDOs = tableDO.getFields();
 
         //
@@ -60,15 +57,15 @@ public class TableAOImpl implements TableAO {
             for (FieldDO fieldDO : fieldDOs) {
                 Object value = null;
                 if (FieldGenerationType.increase.getType().equals(fieldDO.getGenerationType()))  {
-                       if (FieldType.BigDecimal.getType().equals(fieldDO.getType()))  {
-                           value =   numberIncreaseGenerator.generator(fieldDO.getName(), 1l);
-                       }  else if (FieldType.Integer.getType().equals(fieldDO.getType())) {
-                            value = numberIncreaseGenerator.generator(fieldDO.getName(), 1l) ;
-                       } else if (FieldType.Long.getType().equals(fieldDO.getType())) {
-                           value = numberIncreaseGenerator.generator(fieldDO.getName(), 1l) ;
-                       }  else if (FieldType.String.getType().equals(fieldDO.getType())) {
-                           value = stringIncreaseGenerator.generator(fieldDO.getName(), null) ;
-                       }
+                    if (FieldType.BigDecimal.getType().equals(fieldDO.getType()))  {
+                        value =   numberIncreaseGenerator.generator(fieldDO.getName(), 1l);
+                    }  else if (FieldType.Integer.getType().equals(fieldDO.getType())) {
+                        value = numberIncreaseGenerator.generator(fieldDO.getName(), 1l) ;
+                    } else if (FieldType.Long.getType().equals(fieldDO.getType())) {
+                        value = numberIncreaseGenerator.generator(fieldDO.getName(), 1l) ;
+                    }  else if (FieldType.String.getType().equals(fieldDO.getType())) {
+                        value = stringIncreaseGenerator.generator(fieldDO.getName(), null) ;
+                    }
                 }
 
                 fieldValueMap.put(fieldDO.getName(), value);

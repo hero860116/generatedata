@@ -1,60 +1,60 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="gbk" />
-		<title>聚外卖 - 贴心外卖服务</title>
-        <script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/jquery-1.6.4.min.js')" ></script> 
-		<script type="text/javascript" src="$staticsContent.getURI('js/adminJs.js')?t=1" ></script> 
-    	<script src="$staticsContent.getURI('js/jquery.form.js')" type="text/javascript"></script> 
-		<script type="text/javascript" src="$staticsContent.getURI('js/jquery.timers.js')" ></script> 
-    	<script type="text/javascript" src="$staticsContent.getURI('js/commonPosition.js')?t=2" ></script>
-    	<link rel="stylesheet" type="text/css" href="$staticsContent.getURI('css/common.css')?t=3" >
-		<link rel="stylesheet" type="text/css" href="$staticsContent.getURI('css/adminCss.css')">
-        <script type="text/javascript" src="$staticsContent.getURI('js/jplugin/jquery.projectutils.js')?t=7" ></script>
-        <link rel="stylesheet" type="text/css" href="$staticsContent.getURI('css/jplugin/jquery.projectutils.css')?t=3">
-		
-		<!--框架必需start-->
-		<link href="$staticsContent.getURI('qui/libs/css/import_basic.css')" rel="stylesheet" type="text/css"/>
-		<link href="$staticsContent.getURI('qui/libs/skins/blue/style.css')" rel="stylesheet" type="text/css" id="theme" themeColor="blue"/>
-		<link href="$staticsContent.getURI('qui/system/layout/skin/style.css')" rel="stylesheet" type="text/css"/>
-		<script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/framework.js')"></script>
-		<!--框架必需end-->
-		<!--引入弹窗组件start-->
-		<script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/popup/drag.js')"></script>
-		<script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/popup/dialog.js')"></script>
-		<!--引入弹窗组件end-->
-		<!--分隔条start-->
-		<script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/nav/spliter.js')"></script>
-		<!--分隔条end-->
-		<!--引入日期组件start-->
-		<script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/form/datePicker/WdatePicker.js')"></script>
-		<!--引入日期组件end-->
-		<!-- 树形控件start -->
-		<script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/tree/ztree/ztree.js')"></script>
-		<link rel="stylesheet" type="text/css" href="$staticsContent.getURI('qui/libs/js/tree/ztree/ztree.css')">
-		</script>
-		<!-- 树形控件end -->
-		<!-- 树形下拉框start -->
-		<script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/form/selectTree.js')"></script>
-		<!-- 树形下拉框end -->
-		<!--箭头分页start-->
-		<script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/nav/pageArrow.js')"></script>
-		<!--箭头分页end-->
-		<!-- 双向选择器start -->
-		<script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/form/lister.js')"></script>
-		<!-- 双向选择器end -->
-		<!--树形表格start-->
-		<script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/table/treeTable.js')"></script>
-		<!--树形表格end-->
-		
-		<!--基本选项卡start-->
-        <script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/nav/basicTab.js')"></script>
-        <!--基本选项卡end-->
-		
-	</head>
+<head>
+    <meta charset="utf-8" />
+    <title>鑱氬鍗� - 璐村績澶栧崠鏈嶅姟</title>
+    <script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/jquery-1.6.4.min.js')" ></script>
+    <script type="text/javascript" src="$staticsContent.getURI('js/adminJs.js')?t=1" ></script>
+    <script src="$staticsContent.getURI('js/jquery.form.js')" type="text/javascript"></script>
+    <script type="text/javascript" src="$staticsContent.getURI('js/jquery.timers.js')" ></script>
+    <script type="text/javascript" src="$staticsContent.getURI('js/commonPosition.js')?t=2" ></script>
+    <link rel="stylesheet" type="text/css" href="$staticsContent.getURI('css/common.css')?t=3" >
+    <link rel="stylesheet" type="text/css" href="$staticsContent.getURI('css/adminCss.css')">
+    <script type="text/javascript" src="$staticsContent.getURI('js/jplugin/jquery.projectutils.js')?t=7" ></script>
+    <link rel="stylesheet" type="text/css" href="$staticsContent.getURI('css/jplugin/jquery.projectutils.css')?t=3">
+
+    <!--妗嗘灦蹇呴渶start-->
+    <link href="$staticsContent.getURI('qui/libs/css/import_basic.css')" rel="stylesheet" type="text/css"/>
+    <link href="$staticsContent.getURI('qui/libs/skins/blue/style.css')" rel="stylesheet" type="text/css" id="theme" themeColor="blue"/>
+    <link href="$staticsContent.getURI('qui/system/layout/skin/style.css')" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/framework.js')"></script>
+    <!--妗嗘灦蹇呴渶end-->
+    <!--寮曞叆寮圭獥缁勪欢start-->
+    <script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/popup/drag.js')"></script>
+    <script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/popup/dialog.js')"></script>
+    <!--寮曞叆寮圭獥缁勪欢end-->
+    <!--鍒嗛殧鏉tart-->
+    <script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/nav/spliter.js')"></script>
+    <!--鍒嗛殧鏉nd-->
+    <!--寮曞叆鏃ユ湡缁勪欢start-->
+    <script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/form/datePicker/WdatePicker.js')"></script>
+    <!--寮曞叆鏃ユ湡缁勪欢end-->
+    <!-- 鏍戝舰鎺т欢start -->
+    <script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/tree/ztree/ztree.js')"></script>
+    <link rel="stylesheet" type="text/css" href="$staticsContent.getURI('qui/libs/js/tree/ztree/ztree.css')">
+    </script>
+    <!-- 鏍戝舰鎺т欢end -->
+    <!-- 鏍戝舰涓嬫媺妗唖tart -->
+    <script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/form/selectTree.js')"></script>
+    <!-- 鏍戝舰涓嬫媺妗唀nd -->
+    <!--绠ご鍒嗛〉start-->
+    <script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/nav/pageArrow.js')"></script>
+    <!--绠ご鍒嗛〉end-->
+    <!-- 鍙屽悜閫夋嫨鍣╯tart -->
+    <script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/form/lister.js')"></script>
+    <!-- 鍙屽悜閫夋嫨鍣╡nd -->
+    <!--鏍戝舰琛ㄦ牸start-->
+    <script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/table/treeTable.js')"></script>
+    <!--鏍戝舰琛ㄦ牸end-->
+
+    <!--鍩烘湰閫夐」鍗tart-->
+    <script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/nav/basicTab.js')"></script>
+    <!--鍩烘湰閫夐」鍗nd-->
+
+</head>
 <body>
-	<div style="width:98%;margin:0 auto;">
-		$screen_placeholder
-	</div>
+<div style="width:98%;margin:0 auto;">
+    $screen_placeholder
+</div>
 </body>
 </html>

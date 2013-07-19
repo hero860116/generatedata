@@ -1,14 +1,14 @@
 package com.lwl.util;
 
 /**
- * ¶ÔÏó²Ù×÷¹¤¾ßÀà
+ * å¯¹è±¡æ“ä½œå·¥å…·ç±»
  * @author Administrator
  *
  */
 public class ObjectUtil {
-	
-	/**
-	 * ¶ÔÏó¸´ÖÆ
-	 */
-	
+
+    /**
+     * å¯¹è±¡å¤åˆ¶
+     */
+
 }

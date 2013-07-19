@@ -5,248 +5,248 @@ import java.io.Serializable;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
 /**
- * ·ÖÒ³Ëã·¨·â×°¡£ ·ÖÒ³ĞëÉèÖÃ: TotalItem£¨×ÜÌõÊı£©,È±Ê¡Îª0, Ó¦¸ÃÔÚdaoÖĞ±»ÉèÖÃ PageSize£¨Ã¿Ò³ÌõÊı£©£¬Ó¦ÔÚweb²ã±»ÉèÖÃ
- * QueryBase È±Ê¡Îª20£¬×ÓÀà¿ÉÒÔÍ¨¹ı¸²¸Ç getDefaultPageSize() ĞŞ¸Ä CurrentPage£¨µ±Ç°Ò³£©,È±Ê¡Îª1£¬Ê×Ò³£¬
- * Ó¦ÔÚweb²ã±»ÉèÖÃ ·ÖÒ³ºó£¬¿ÉÒÔµÃµ½£ºTotalPage£¨×ÜÒ³Êı£© FristItem(µ±Ç°Ò³¿ªÊ¼¼ÇÂ¼Î»ÖÃ£¬´Ó1¿ªÊ¼¼ÇÊı)
- * PageLastItem(µ±Ç°Ò³×îºó¼ÇÂ¼Î»ÖÃ) Ò³ÃæÉÏ£¬Ã¿Ò³ÏÔÊ¾ÌõÊıÃû×ÖÓ¦Îª£º lines £¬µ±Ç°Ò³Ãû×ÖÓ¦Îª£º page
- * 
- * Í¬Ê±¼ÓÈëäÖÈ¾Á´½Ó¹¦ÄÜ£¬×ÓÀà¸²¸ÇgetParameteres·½·¨£¬·µ»ØÓĞĞ§µÄ²ÎÊı¡£
- * 
+ * åˆ†é¡µç®—æ³•å°è£…ã€‚ åˆ†é¡µé¡»è®¾ç½®: TotalItemï¼ˆæ€»æ¡æ•°ï¼‰,ç¼ºçœä¸º0, åº”è¯¥åœ¨daoä¸­è¢«è®¾ç½® PageSizeï¼ˆæ¯é¡µæ¡æ•°ï¼‰ï¼Œåº”åœ¨webå±‚è¢«è®¾ç½®
+ * QueryBase ç¼ºçœä¸º20ï¼Œå­ç±»å¯ä»¥é€šè¿‡è¦†ç›– getDefaultPageSize() ä¿®æ”¹ CurrentPageï¼ˆå½“å‰é¡µï¼‰,ç¼ºçœä¸º1ï¼Œé¦–é¡µï¼Œ
+ * åº”åœ¨webå±‚è¢«è®¾ç½® åˆ†é¡µåï¼Œå¯ä»¥å¾—åˆ°ï¼šTotalPageï¼ˆæ€»é¡µæ•°ï¼‰ FristItem(å½“å‰é¡µå¼€å§‹è®°å½•ä½ç½®ï¼Œä»1å¼€å§‹è®°æ•°)
+ * PageLastItem(å½“å‰é¡µæœ€åè®°å½•ä½ç½®) é¡µé¢ä¸Šï¼Œæ¯é¡µæ˜¾ç¤ºæ¡æ•°åå­—åº”ä¸ºï¼š lines ï¼Œå½“å‰é¡µåå­—åº”ä¸ºï¼š page
+ *
+ * åŒæ—¶åŠ å…¥æ¸²æŸ“é“¾æ¥åŠŸèƒ½ï¼Œå­ç±»è¦†ç›–getParameteresæ–¹æ³•ï¼Œè¿”å›æœ‰æ•ˆçš„å‚æ•°ã€‚
+ *
  * @author shenyu
  * @author daolin
- * 
+ *
  */
 public class BaseQuery implements Serializable {
 
-	private static final long serialVersionUID = 3258128059449226041L;
-	private static final Integer defaultPageSize = 20;
-	
-	private Integer totalItem;
-	private Integer pageSize;
-	private Integer currentPage;
+    private static final long serialVersionUID = 3258128059449226041L;
+    private static final Integer defaultPageSize = 20;
 
-	// for paging
-	private int startRow;
-	private int endRow;
-	
-	/**
-	 * µÚÒ»ÅÅĞò
-	 */
-	private String firstOrder;
-	
-	/**
-	 * µÚÒ»ÅÅĞòµÄÅÅĞò·½Ê½£¬Ä¬ÈÏÉıĞò£¨ÓëÏµÍ³±£³ÖÒ»ÖÂ£©
-	 */
-	private String firstOrderSort = "asc";
-	
-	/**
-	 * µÚ¶şÅÅĞò
-	 */
-	private String  secondOrder;
-	
-	/**
-	 * µÚ¶şÅÅĞòµÄÅÅĞò·½Ê½£¬Ä¬ÈÏÉıĞò£¨ÓëÏµÍ³±£³ÖÒ»ÖÂ£©
-	 */
-	private String secondOrderSort = "asc";
+    private Integer totalItem;
+    private Integer pageSize;
+    private Integer currentPage;
 
-	protected Integer getDefaultPageSize() {
-		return defaultPageSize;
-	}
+    // for paging
+    private int startRow;
+    private int endRow;
 
-	public boolean isFirstPage() {
-		return this.getCurrentPage().intValue() == 1;
-	}
+    /**
+     * ç¬¬ä¸€æ’åº
+     */
+    private String firstOrder;
 
-	public int getPreviousPage() {
-		int back = this.getCurrentPage().intValue() - 1;
+    /**
+     * ç¬¬ä¸€æ’åºçš„æ’åºæ–¹å¼ï¼Œé»˜è®¤å‡åºï¼ˆä¸ç³»ç»Ÿä¿æŒä¸€è‡´ï¼‰
+     */
+    private String firstOrderSort = "asc";
 
-		if (back <= 0) {
-			back = 1;
-		}
+    /**
+     * ç¬¬äºŒæ’åº
+     */
+    private String  secondOrder;
 
-		return back;
-	}
+    /**
+     * ç¬¬äºŒæ’åºçš„æ’åºæ–¹å¼ï¼Œé»˜è®¤å‡åºï¼ˆä¸ç³»ç»Ÿä¿æŒä¸€è‡´ï¼‰
+     */
+    private String secondOrderSort = "asc";
 
-	public boolean isLastPage() {
-		return this.getTotalPage() == this.getCurrentPage().intValue();
-	}
+    protected Integer getDefaultPageSize() {
+        return defaultPageSize;
+    }
 
-	public int getNextPage() {
-		int back = this.getCurrentPage().intValue() + 1;
+    public boolean isFirstPage() {
+        return this.getCurrentPage().intValue() == 1;
+    }
 
-		if (back > this.getTotalPage()) {
-			back = this.getTotalPage();
-		}
+    public int getPreviousPage() {
+        int back = this.getCurrentPage().intValue() - 1;
 
-		return back;
-	}
+        if (back <= 0) {
+            back = 1;
+        }
 
-	/**
-	 * @return Returns the currentPage.
-	 */
-	public Integer getCurrentPage() {
-		if (currentPage == null || currentPage.intValue() == 0) {
-			return 1;
-		}
+        return back;
+    }
 
-		return currentPage;
-	}
+    public boolean isLastPage() {
+        return this.getTotalPage() == this.getCurrentPage().intValue();
+    }
 
-	/**
-	 * @param currentPage
-	 *            The currentPage to set.
-	 */
-	public void setCurrentPage(Integer page) {
-		if ((page == null) || (page.intValue() <= 0)) {
-			this.currentPage = null;
-		} else {
-			this.currentPage = page;
-		}
-		setStartEndRow();
-	}
+    public int getNextPage() {
+        int back = this.getCurrentPage().intValue() + 1;
 
-	private void setStartEndRow() {
-		this.startRow = this.getPageSize().intValue() * (this.getCurrentPage().intValue() - 1);
-		this.endRow = this.startRow + this.getPageSize().intValue();
-	}
+        if (back > this.getTotalPage()) {
+            back = this.getTotalPage();
+        }
 
-	/**
-	 * @return Returns the pageSize.
-	 */
-	public Integer getPageSize() {
-		if (pageSize == null) {
-			return getDefaultPageSize();
-		}
+        return back;
+    }
 
-		return pageSize;
-	}
+    /**
+     * @return Returns the currentPage.
+     */
+    public Integer getCurrentPage() {
+        if (currentPage == null || currentPage.intValue() == 0) {
+            return 1;
+        }
 
-	/**
-	 * @param pageSize
-	 *            The pageSize to set.
-	 */
-	public void setPageSize(Integer pageSize) {
-		if ((pageSize == null) || (pageSize.intValue() <= 0)) {
-			this.pageSize = null;
-		} else {
-			this.pageSize = pageSize;
-		}
-		setStartEndRow();
-	}
+        return currentPage;
+    }
 
-	/**
-	 * @return Returns the totalItem.
-	 */
-	public Integer getTotalItem() {
-		if (totalItem == null) {
-			return 0;
-		}
+    /**
+     * @param currentPage
+     *            The currentPage to set.
+     */
+    public void setCurrentPage(Integer page) {
+        if ((page == null) || (page.intValue() <= 0)) {
+            this.currentPage = null;
+        } else {
+            this.currentPage = page;
+        }
+        setStartEndRow();
+    }
 
-		return totalItem;
-	}
+    private void setStartEndRow() {
+        this.startRow = this.getPageSize().intValue() * (this.getCurrentPage().intValue() - 1);
+        this.endRow = this.startRow + this.getPageSize().intValue();
+    }
 
-	/**
-	 * @param totalItem The totalItem to set.
-	 */
-	public void setTotalItem(Integer totalItem) {
-		this.totalItem = totalItem;
+    /**
+     * @return Returns the pageSize.
+     */
+    public Integer getPageSize() {
+        if (pageSize == null) {
+            return getDefaultPageSize();
+        }
 
-		int current = this.getCurrentPage().intValue();
-		int lastPage = this.getTotalPage();
+        return pageSize;
+    }
 
-		if (current > lastPage) {
-			this.setCurrentPage(lastPage);
-		}
-	}
+    /**
+     * @param pageSize
+     *            The pageSize to set.
+     */
+    public void setPageSize(Integer pageSize) {
+        if ((pageSize == null) || (pageSize.intValue() <= 0)) {
+            this.pageSize = null;
+        } else {
+            this.pageSize = pageSize;
+        }
+        setStartEndRow();
+    }
 
-	public int getTotalPage() {
-		int pageSize = this.getPageSize().intValue();
-		int total = this.getTotalItem().intValue();
-		int result = total / pageSize;
+    /**
+     * @return Returns the totalItem.
+     */
+    public Integer getTotalItem() {
+        if (totalItem == null) {
+            return 0;
+        }
 
-		if ((total == 0) || ((total % pageSize) != 0)) {
-			result++;
-		}
+        return totalItem;
+    }
 
-		return result;
-	}
+    /**
+     * @param totalItem The totalItem to set.
+     */
+    public void setTotalItem(Integer totalItem) {
+        this.totalItem = totalItem;
 
-	public int getPageLastItem() {
-		int cPage = this.getCurrentPage().intValue();
-		int pgSize = this.getPageSize().intValue();
-		int assumeLast = pgSize * cPage;
-		int totalItem = getTotalItem().intValue();
+        int current = this.getCurrentPage().intValue();
+        int lastPage = this.getTotalPage();
 
-		if (assumeLast > totalItem) {
-			return totalItem;
-		} else {
-			return assumeLast;
-		}
-	}
+        if (current > lastPage) {
+            this.setCurrentPage(lastPage);
+        }
+    }
 
-	/**
-	 * @return Returns the endRow.
-	 */
-	public int getEndRow() {
-		return endRow;
-	}
+    public int getTotalPage() {
+        int pageSize = this.getPageSize().intValue();
+        int total = this.getTotalItem().intValue();
+        int result = total / pageSize;
 
-	/**
-	 * @param endRow
-	 *            The endRow to set.
-	 */
-	public void setEndRow(int endRow) {
-		this.endRow = endRow;
-	}
+        if ((total == 0) || ((total % pageSize) != 0)) {
+            result++;
+        }
 
-	/**
-	 * @return Returns the startRow.
-	 */
-	public int getStartRow() {
-		return startRow;
-	}
+        return result;
+    }
 
-	/**
-	 * @param startRow
-	 *            The startRow to set.
-	 */
-	public void setStartRow(int startRow) {
-		this.startRow = startRow;
-	}
+    public int getPageLastItem() {
+        int cPage = this.getCurrentPage().intValue();
+        int pgSize = this.getPageSize().intValue();
+        int assumeLast = pgSize * cPage;
+        int totalItem = getTotalItem().intValue();
 
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this);
-	}
-	
-	public String getFirstOrder() {
-		return firstOrder;
-	}
+        if (assumeLast > totalItem) {
+            return totalItem;
+        } else {
+            return assumeLast;
+        }
+    }
 
-	public void setFirstOrder(String firstOrder) {
-		this.firstOrder = firstOrder;
-	}
+    /**
+     * @return Returns the endRow.
+     */
+    public int getEndRow() {
+        return endRow;
+    }
 
-	public String getSecondOrder() {
-		return secondOrder;
-	}
+    /**
+     * @param endRow
+     *            The endRow to set.
+     */
+    public void setEndRow(int endRow) {
+        this.endRow = endRow;
+    }
 
-	public void setSecondOrder(String secondOrder) {
-		this.secondOrder = secondOrder;
-	}
-	
-	public String getFirstOrderSort() {
-		return firstOrderSort;
-	}
+    /**
+     * @return Returns the startRow.
+     */
+    public int getStartRow() {
+        return startRow;
+    }
 
-	public void setFirstOrderSort(String firstOrderSort) {
-		this.firstOrderSort = firstOrderSort;
-	}
+    /**
+     * @param startRow
+     *            The startRow to set.
+     */
+    public void setStartRow(int startRow) {
+        this.startRow = startRow;
+    }
 
-	public String getSecondOrderSort() {
-		return secondOrderSort;
-	}
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this);
+    }
 
-	public void setSecondOrderSort(String secondOrderSort) {
-		this.secondOrderSort = secondOrderSort;
-	}
+    public String getFirstOrder() {
+        return firstOrder;
+    }
+
+    public void setFirstOrder(String firstOrder) {
+        this.firstOrder = firstOrder;
+    }
+
+    public String getSecondOrder() {
+        return secondOrder;
+    }
+
+    public void setSecondOrder(String secondOrder) {
+        this.secondOrder = secondOrder;
+    }
+
+    public String getFirstOrderSort() {
+        return firstOrderSort;
+    }
+
+    public void setFirstOrderSort(String firstOrderSort) {
+        this.firstOrderSort = firstOrderSort;
+    }
+
+    public String getSecondOrderSort() {
+        return secondOrderSort;
+    }
+
+    public void setSecondOrderSort(String secondOrderSort) {
+        this.secondOrderSort = secondOrderSort;
+    }
 }

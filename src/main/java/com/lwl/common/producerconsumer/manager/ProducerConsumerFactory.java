@@ -5,53 +5,53 @@ import java.util.concurrent.ConcurrentHashMap;
 
 
 /**
- * Éú²úÕßÏû·ÑÕß¹¤³§
- * 
+ * ç”Ÿäº§è€…æ¶ˆè´¹è€…å·¥å‚
+ *
  * @author liweilin
  *
  */
 public class ProducerConsumerFactory
 {
     /**
-     * µ¥Àı
+     * å•ä¾‹
      */
     private static ProducerConsumerFactory instance = new ProducerConsumerFactory();
-    
+
     /**
-     * ´æ·ÅÒÑ¾­¹¹ÔìºÃµÄÉú²úÕßÏû·ÑÕßÄ£ĞÍ
+     * å­˜æ”¾å·²ç»æ„é€ å¥½çš„ç”Ÿäº§è€…æ¶ˆè´¹è€…æ¨¡å‹
      */
     private Map<String, QueueConsumerManager> queueConsumerManagerMap = new ConcurrentHashMap<String, QueueConsumerManager>();
-    
+
     /**
-     * Ë½ÓĞ¹¹Ôì·½·¨
+     * ç§æœ‰æ„é€ æ–¹æ³•
      *
      */
     private ProducerConsumerFactory()
     {
-        
+
     }
-    
+
     /**
-     * ¹¹ÔìÉú²úÕßÏû·ÑÕßÄ£ĞÍ
-     * 
-     * @param name       Éú²úÕßÏû·ÑÕßÃû³Æ
-     * @param queueSize  ¶ÓÁĞ´óĞ¡
-     * @param threadSize Ïû·ÑÕßÏß³Ì¸öÊı
+     * æ„é€ ç”Ÿäº§è€…æ¶ˆè´¹è€…æ¨¡å‹
+     *
+     * @param name       ç”Ÿäº§è€…æ¶ˆè´¹è€…åç§°
+     * @param queueSize  é˜Ÿåˆ—å¤§å°
+     * @param threadSize æ¶ˆè´¹è€…çº¿ç¨‹ä¸ªæ•°
      */
     public static void createProducerConsumer(String name, int queueSize, int threadSize)
     {
-        //´´½¨Éú²úÕßÏû·ÑÕßÄ£ĞÍ
+        //åˆ›å»ºç”Ÿäº§è€…æ¶ˆè´¹è€…æ¨¡å‹
         QueueConsumerManager queueConsumerManager = new QueueConsumerManager(name, queueSize, threadSize);
-        
-        //¼ÓÈë»º´æ
+
+        //åŠ å…¥ç¼“å­˜
         instance.getQueueConsumerManagerMap().put(name, queueConsumerManager);
     }
-    
+
     /**
-     * ·µ»ØÉú²úÕßÏû·ÑÕß¹ÜÀíÀà
-     * 
-     * @param name Éú²úÕßÏû·ÑÕßÃû³Æ
-     * @return Éú²úÕßÏû·ÑÕß¹ÜÀíÀà
+     * è¿”å›ç”Ÿäº§è€…æ¶ˆè´¹è€…ç®¡ç†ç±»
+     *
+     * @param name ç”Ÿäº§è€…æ¶ˆè´¹è€…åç§°
+     * @return ç”Ÿäº§è€…æ¶ˆè´¹è€…ç®¡ç†ç±»
      */
     public static QueueConsumerManager getProducerConsumer(String name)
     {
@@ -62,5 +62,5 @@ public class ProducerConsumerFactory
     {
         return queueConsumerManagerMap;
     }
-    
+
 }

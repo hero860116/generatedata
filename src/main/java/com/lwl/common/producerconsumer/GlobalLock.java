@@ -4,30 +4,30 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * ºÏ³É¶ÓÁĞÈ«¾ÖËø
- * 
+ * åˆæˆé˜Ÿåˆ—å…¨å±€é”
+ *
  * @author liweilin
  *
  */
 public final class GlobalLock
 {
     /**
-     * µ¥Àı
+     * å•ä¾‹
      */
     private static GlobalLock instance = new GlobalLock();
-    
+
     /**
-     * Ëø
+     * é”
      */
     private ReentrantLock assignerLock;
 
     /**
-     * µÈ´ı²»Îª¿Õ
+     * ç­‰å¾…ä¸ä¸ºç©º
      */
     private Condition assignerNotEmpty;
-    
+
     /**
-     * Ë½ÓĞ¹¹Ôìº¯Êı
+     * ç§æœ‰æ„é€ å‡½æ•°
      *
      */
     private GlobalLock()
@@ -35,18 +35,18 @@ public final class GlobalLock
         assignerLock = new ReentrantLock();
         assignerNotEmpty = assignerLock.newCondition();
     }
-    
+
     /**
-     * »ñµÃÈ«¾ÖËø
+     * è·å¾—å…¨å±€é”
      * @return
      */
     public static ReentrantLock getReentrantLock()
     {
         return instance.getAssignerLock();
     }
-    
+
     /**
-     * »ñµÃµÈ´ıÌõ¼ş
+     * è·å¾—ç­‰å¾…æ¡ä»¶
      * @return
      */
     public static Condition getCondition()
@@ -63,5 +63,5 @@ public final class GlobalLock
     {
         return assignerNotEmpty;
     }
-   
+
 }

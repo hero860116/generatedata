@@ -1,34 +1,34 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="gbk" />
-		<title>聚外卖 - 贴心外卖服务</title>
-		<!--框架必需start-->
-		<link href="$staticsContent.getURI('qui/libs/css/import_basic.css')" rel="stylesheet" type="text/css"/>
-		<link href="$staticsContent.getURI('qui/libs/skins/blue/style.css')" rel="stylesheet" type="text/css"/>
-		<link href="$staticsContent.getURI('qui/system/layout/skin/style.css')" rel="stylesheet" type="text/css"/>
-		<script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/jquery-1.6.4.min.js')" ></script>
-		<script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/framework.js')"></script>
-		<!--框架必需end-->
-		
-        <!--树组件start -->
-        <script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/tree/ztree/ztree.js')"></script>
-        <link href="$staticsContent.getURI('qui/libs/js/tree/ztree/ztree.css')" rel="stylesheet" type="text/css"/>
-        <!--树组件end -->
-		
-		<script>
-            var nodes1 = $!treeNodesJson;
-			
-			function initComplete(){
-    			jQuery.fn.zTree.init($("#tree-1"), {}, nodes1);
-			}
-		</script>
-	</head>
+<head>
+    <meta charset="utf-8" />
+    <title>鑱氬鍗� - 璐村績澶栧崠鏈嶅姟</title>
+    <!--妗嗘灦蹇呴渶start-->
+    <link href="$staticsContent.getURI('qui/libs/css/import_basic.css')" rel="stylesheet" type="text/css"/>
+    <link href="$staticsContent.getURI('qui/libs/skins/blue/style.css')" rel="stylesheet" type="text/css"/>
+    <link href="$staticsContent.getURI('qui/system/layout/skin/style.css')" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/jquery-1.6.4.min.js')" ></script>
+    <script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/framework.js')"></script>
+    <!--妗嗘灦蹇呴渶end-->
+
+    <!--鏍戠粍浠秙tart -->
+    <script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/tree/ztree/ztree.js')"></script>
+    <link href="$staticsContent.getURI('qui/libs/js/tree/ztree/ztree.css')" rel="stylesheet" type="text/css"/>
+    <!--鏍戠粍浠秂nd -->
+
+    <script>
+        var nodes1 = $!treeNodesJson;
+
+        function initComplete(){
+            jQuery.fn.zTree.init($("#tree-1"), {}, nodes1);
+        }
+    </script>
+</head>
 <body>
-	<div id="scrollContent">
-		<div>
-			<ul id="tree-1" class="ztree"></ul>
-		</div>
-	</div>
+<div id="scrollContent">
+    <div>
+        <ul id="tree-1" class="ztree"></ul>
+    </div>
+</div>
 </body>
 </html>

@@ -2,45 +2,45 @@
 <!doctype html>
 <html>
 <head>
-	<meta charset="gbk" />
-	<title>聚外卖 - 贴心外卖服务</title>
-	<link rel="stylesheet" type="text/css" href="$staticsContent.getURI('css/common.css')?t=1" >
-    <script type="text/javascript" src="$staticsContent.getURI('js/jquery-1.6.4.min.js')" ></script> 
-	<!--框架必需start-->
-	
+    <meta charset="utf-8" />
+    <title>鑱氬鍗� - 璐村績澶栧崠鏈嶅姟</title>
+    <link rel="stylesheet" type="text/css" href="$staticsContent.getURI('css/common.css')?t=1" >
+    <script type="text/javascript" src="$staticsContent.getURI('js/jquery-1.6.4.min.js')" ></script>
+    <!--妗嗘灦蹇呴渶start-->
+
     <link href="$staticsContent.getURI('qui/libs/css/import_basic.css')" rel="stylesheet" type="text/css"/>
     <link href="$staticsContent.getURI('qui/libs/skins/blue/style.css')" rel="stylesheet" type="text/css"/>
     <link href="$staticsContent.getURI('qui/system/layout/skin/style.css')" rel="stylesheet" type="text/css"/>
-    
-	<script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/framework.js')"></script>
-    <!--框架必需end-->
-    
-    <!--引入弹窗组件start-->
+
+    <script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/framework.js')"></script>
+    <!--妗嗘灦蹇呴渶end-->
+
+    <!--寮曞叆寮圭獥缁勪欢start-->
     <script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/popup/drag.js')"></script>
     <script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/popup/dialog.js')"></script>
-    <!--引入弹窗组件end-->
-	
-	<!--引入日期组件start-->
-	<script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/form/datePicker/WdatePicker.js')"></script>
-	 <!--引入日期组件end-->
+    <!--寮曞叆寮圭獥缁勪欢end-->
 
-	 <!-- 树形控件start -->
-	 <script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/tree/ztree/ztree.js')"></script>
-	 <link rel="stylesheet" type="text/css" href="$staticsContent.getURI('qui/libs/js/tree/ztree/ztree.css')"></script>
-	 <!-- 树形控件end -->
-	 
-	 <!-- 树形下拉框start -->
+    <!--寮曞叆鏃ユ湡缁勪欢start-->
+    <script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/form/datePicker/WdatePicker.js')"></script>
+    <!--寮曞叆鏃ユ湡缁勪欢end-->
+
+    <!-- 鏍戝舰鎺т欢start -->
+    <script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/tree/ztree/ztree.js')"></script>
+    <link rel="stylesheet" type="text/css" href="$staticsContent.getURI('qui/libs/js/tree/ztree/ztree.css')"></script>
+    <!-- 鏍戝舰鎺т欢end -->
+
+    <!-- 鏍戝舰涓嬫媺妗唖tart -->
     <script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/form/selectTree.js')"></script>
-    <!-- 树形下拉框end -->
-	
-    <!--箭头分页start-->
+    <!-- 鏍戝舰涓嬫媺妗唀nd -->
+
+    <!--绠ご鍒嗛〉start-->
     <script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/nav/pageArrow.js')"></script>
-    <!--箭头分页end-->
-	
-	
-    <!-- 双向选择器start -->
+    <!--绠ご鍒嗛〉end-->
+
+
+    <!-- 鍙屽悜閫夋嫨鍣╯tart -->
     <script type="text/javascript" src="$staticsContent.getURI('qui/libs/js/form/lister.js')"></script>
-    <!-- 双向选择器end -->
+    <!-- 鍙屽悜閫夋嫨鍣╡nd -->
 
 </head>
 <body>

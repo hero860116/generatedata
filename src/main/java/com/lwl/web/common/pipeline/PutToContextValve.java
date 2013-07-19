@@ -12,51 +12,50 @@ import com.alibaba.citrus.turbine.Context;
 import com.alibaba.citrus.turbine.TurbineRunDataInternal;
 
 /**
- * ½«°üº¬v_param²ÎÊıµÄÇëÇó²ÎÊıÖ±½Ó·ÅÈëcontextÖĞ
+ * å°†åŒ…å«v_paramå‚æ•°çš„è¯·æ±‚å‚æ•°ç›´æ¥æ”¾å…¥contextä¸­
  * @author Administrator
  *
  *
- * ·³µã£ºÍ¨¹ırequest»ñÈ¡ÍêÕûµÄ·ÃÎÊurl
+ * çƒ¦ç‚¹ï¼šé€šè¿‡requestè·å–å®Œæ•´çš„è®¿é—®url
  */
 public class PutToContextValve extends AbstractValve {
 
-	@Resource
-	private HttpServletRequest request;
-	
-	@Resource
-	private HttpSession session;
-	
-	/**
-	 * ½«¹«ÓÃÔªËØ£¨session,referer£©·ÅÈëcontextÖĞ£¬»òÕß½«ÖÆ¶¨ÔªËØ£¬ÔªËØÃûÎªv_paramµÄÖµ
-	 */
-	@Override
-	public void invoke(PipelineContext pipelineContext) throws Exception {
+    @Resource
+    private HttpServletRequest request;
 
-		TurbineRunDataInternal rundata = (TurbineRunDataInternal) getTurbineRunData(request);
-		Context context = rundata.getContext();
+    @Resource
+    private HttpSession session;
 
-		//½«v_paramÊôĞÔ¶ÔÓÚÖµÊôĞÔ£¬·ÅÈëcontextÖĞ
-		String[] keys = rundata.getParameters().getStrings("v_param");
-		
-		if (keys != null) {
-			for (int i = 0; i < keys.length; i++) {
-				String key = keys[i];
-				String value = rundata.getParameters().getString(key);
-				
-				context.put(key, value);
-			}
-		}
-		
-		//Èç¹ûµÇÂ¼£¬½«µÇÂ¼id¡¢userName¡¢areaId·ÅÈë
-		Long userId = (Long)session.getAttribute("userId");
-		String userName = (String)session.getAttribute("userName");
-		if (userId != null && userName != null) {
-			context.put("userId", userId);
-			context.put("userName", userName);
-		}
-		
+    /**
+     * å°†å…¬ç”¨å…ƒç´ ï¼ˆsession,refererï¼‰æ”¾å…¥contextä¸­ï¼Œæˆ–è€…å°†åˆ¶å®šå…ƒç´ ï¼Œå…ƒç´ åä¸ºv_paramçš„å€¼
+     */
+    public void invoke(PipelineContext pipelineContext) throws Exception {
 
-		pipelineContext.invokeNext();
-	}
+        TurbineRunDataInternal rundata = (TurbineRunDataInternal) getTurbineRunData(request);
+        Context context = rundata.getContext();
+
+        //å°†v_paramå±æ€§å¯¹äºå€¼å±æ€§ï¼Œæ”¾å…¥contextä¸­
+        String[] keys = rundata.getParameters().getStrings("v_param");
+
+        if (keys != null) {
+            for (int i = 0; i < keys.length; i++) {
+                String key = keys[i];
+                String value = rundata.getParameters().getString(key);
+
+                context.put(key, value);
+            }
+        }
+
+        //å¦‚æœç™»å½•ï¼Œå°†ç™»å½•idã€userNameã€areaIdæ”¾å…¥
+        Long userId = (Long)session.getAttribute("userId");
+        String userName = (String)session.getAttribute("userName");
+        if (userId != null && userName != null) {
+            context.put("userId", userId);
+            context.put("userName", userName);
+        }
+
+
+        pipelineContext.invokeNext();
+    }
 
 }

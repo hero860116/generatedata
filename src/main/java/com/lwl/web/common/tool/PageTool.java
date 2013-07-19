@@ -9,32 +9,32 @@ import java.util.regex.Pattern;
 
 public class PageTool {
 
-	@Autowired
-	private HttpServletRequest request;
+    @Autowired
+    private HttpServletRequest request;
 
-	public String paging(int page) {
-		StringBuffer buffer = request.getRequestURL();
+    public String paging(int page) {
+        StringBuffer buffer = request.getRequestURL();
 
-		String queryString = request.getQueryString();
+        String queryString = request.getQueryString();
 
-		if (queryString != null) {
-			buffer.append('?').append(queryString);
-		}
+        if (queryString != null) {
+            buffer.append('?').append(queryString);
+        }
 
-		String url = buffer.toString();
+        String url = buffer.toString();
 
-		try {
-			url = new String(url.getBytes("ISO-8859-1"), "GBK");
-		} catch (UnsupportedEncodingException e) {
-			//ignore...
-		}
+        try {
+            url = new String(url.getBytes("ISO-8859-1"), "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            //ignore...
+        }
 
-		Pattern pattern = Pattern.compile("(.*[\\?&]?page=)(\\d*)([&#]?.*)");
-		Matcher m = pattern.matcher(url);
-		if (!m.matches()) {
-			return url + (url.indexOf('?') == -1 ? '?' : '&') + "page=" + page;
-		} else {
-			return m.replaceAll("$1" + page + "$3");
-		}
-	}
+        Pattern pattern = Pattern.compile("(.*[\\?&]?page=)(\\d*)([&#]?.*)");
+        Matcher m = pattern.matcher(url);
+        if (!m.matches()) {
+            return url + (url.indexOf('?') == -1 ? '?' : '&') + "page=" + page;
+        } else {
+            return m.replaceAll("$1" + page + "$3");
+        }
+    }
 }

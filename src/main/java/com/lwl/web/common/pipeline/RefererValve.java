@@ -14,108 +14,107 @@ import com.alibaba.citrus.turbine.Context;
 import com.alibaba.citrus.turbine.TurbineRunDataInternal;
 
 /**
- * 
+ *
  * @author Administrator
  *
  *
- * ·³µã£ºÍ¨¹ırequest»ñÈ¡ÍêÕûµÄ·ÃÎÊurl
+ * çƒ¦ç‚¹ï¼šé€šè¿‡requestè·å–å®Œæ•´çš„è®¿é—®url
  */
 public class RefererValve extends AbstractValve {
 
-	@Resource
-	private HttpServletRequest request;
+    @Resource
+    private HttpServletRequest request;
 
-	@Resource
-	private HttpSession session;
+    @Resource
+    private HttpSession session;
 
-	@Override
-	public void invoke(PipelineContext pipelineContext) throws Exception {
-		
-		String port = request.getServerPort() == 80 ? "" : ":"
-				+ (request.getServerPort());
-		String queryString = request.getQueryString() == null ? "" : "?"
-				+ request.getQueryString();
+    public void invoke(PipelineContext pipelineContext) throws Exception {
 
-		// µ±Ç°µã»÷µÄurl
-		String inUri = "http://" + request.getServerName() + port
-				+ request.getRequestURI() + queryString;
+        String port = request.getServerPort() == 80 ? "" : ":"
+                + (request.getServerPort());
+        String queryString = request.getQueryString() == null ? "" : "?"
+                + request.getQueryString();
 
-		// µ±Ç°refererurl
-		String referUri = request.getHeader("referer");
+        // å½“å‰ç‚¹å‡»çš„url
+        String inUri = "http://" + request.getServerName() + port
+                + request.getRequestURI() + queryString;
 
-		// sessionÖĞ±£´æµÄurl
-		@SuppressWarnings("unchecked")
-		LinkedList<String> referers = (LinkedList<String>) session
-				.getAttribute("referers");
+        // å½“å‰refererurl
+        String referUri = request.getHeader("referer");
 
-		//ÊÇ·ñÔö¼Óreferer
-		if (referUri == null) {
-			
-		} else if (inUri.contains("success")) {
+        // sessionä¸­ä¿å­˜çš„url
+        @SuppressWarnings("unchecked")
+        LinkedList<String> referers = (LinkedList<String>) session
+                .getAttribute("referers");
 
-		}
-		//Ìá½»µ±Ç°Ò³Ãæ
-		else if (inUri.equals(referUri)) {
+        //æ˜¯å¦å¢åŠ referer
+        if (referUri == null) {
 
-		}
-		//µ±Ç°Ò³ÃæµÄ·ÖÒ³Ìá½»
-		else if (referers != null && referers.size() > 0
-				&& removePageQuery(inUri).equals(removePageQuery(referUri))) {
+        } else if (inUri.contains("success")) {
 
-		}
+        }
+        //æäº¤å½“å‰é¡µé¢
+        else if (inUri.equals(referUri)) {
 
-		else {
+        }
+        //å½“å‰é¡µé¢çš„åˆ†é¡µæäº¤
+        else if (referers != null && referers.size() > 0
+                && removePageQuery(inUri).equals(removePageQuery(referUri))) {
 
-			if (referers == null) {
-				referers = new LinkedList<String>();
-			}
+        }
 
-			referers.addLast(referUri);
+        else {
 
-			// ½«ÉÏÒ»¸öreferer¼ÓÈëºó£¬¼ì²éÁ¬½ÓÊÇ·ñÔÚÔ­À´µÄ¼ÇÂ¼ÖĞ£¬È»ºó½øĞĞÖØÖÃ
-			if (referers != null && referers.contains(inUri)) {
-				int index = referers.indexOf(inUri);
+            if (referers == null) {
+                referers = new LinkedList<String>();
+            }
 
-				LinkedList<String> subReferers = new LinkedList<String>();
-				for (int i = 0; i < index; i++) {
-					subReferers.add(referers.get(i));
-				}
+            referers.addLast(referUri);
 
-				referers = subReferers;
-			}
-		}
+            // å°†ä¸Šä¸€ä¸ªrefereråŠ å…¥åï¼Œæ£€æŸ¥è¿æ¥æ˜¯å¦åœ¨åŸæ¥çš„è®°å½•ä¸­ï¼Œç„¶åè¿›è¡Œé‡ç½®
+            if (referers != null && referers.contains(inUri)) {
+                int index = referers.indexOf(inUri);
 
-		//ÊÇ·ñÉ¾³ıreferer
-		if (referers != null && referers.size() > 0
-				&& inUri.equals(referers.getLast())) {
-			referers.removeLast();
+                LinkedList<String> subReferers = new LinkedList<String>();
+                for (int i = 0; i < index; i++) {
+                    subReferers.add(referers.get(i));
+                }
 
-		}
+                referers = subReferers;
+            }
+        }
 
-		TurbineRunDataInternal rundata = (TurbineRunDataInternal) getTurbineRunData(request);
-		Context context = rundata.getContext();
+        //æ˜¯å¦åˆ é™¤referer
+        if (referers != null && referers.size() > 0
+                && inUri.equals(referers.getLast())) {
+            referers.removeLast();
 
-		session.setAttribute("referers", referers);
-		if (referers != null && referers.size() > 0) {
-			context.put("referer", referers.getLast());
-			rundata.getParameters().add("referer", referers.getLast());
-		}
+        }
 
-		pipelineContext.invokeNext();
-	}
+        TurbineRunDataInternal rundata = (TurbineRunDataInternal) getTurbineRunData(request);
+        Context context = rundata.getContext();
 
-	private String removePageQuery(String uri) {
-		String removeUri = "";
-		if (uri.contains("&page=")) {
-			removeUri = uri.replaceAll("&page=\\d+", "");
-		} else {
-			removeUri = uri.replaceAll("page=\\d+", "");
-		}
+        session.setAttribute("referers", referers);
+        if (referers != null && referers.size() > 0) {
+            context.put("referer", referers.getLast());
+            rundata.getParameters().add("referer", referers.getLast());
+        }
 
-		if (removeUri.endsWith("?")) {
-			removeUri.replace("?", "");
-		}
+        pipelineContext.invokeNext();
+    }
 
-		return removeUri;
-	}
+    private String removePageQuery(String uri) {
+        String removeUri = "";
+        if (uri.contains("&page=")) {
+            removeUri = uri.replaceAll("&page=\\d+", "");
+        } else {
+            removeUri = uri.replaceAll("page=\\d+", "");
+        }
+
+        if (removeUri.endsWith("?")) {
+            removeUri.replace("?", "");
+        }
+
+        return removeUri;
+    }
 }

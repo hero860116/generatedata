@@ -7,245 +7,245 @@ import java.util.Date;
 import org.apache.commons.lang.time.DateUtils;
 
 /**
- * ×Ö·ûÊ±¼ä¹¤¾ßÀà ,Ïà¶ÔÓÚÒ»ÌìµÄÊ±¼ä(11:20)
+ * å­—ç¬¦æ—¶é—´å·¥å…·ç±» ,ç›¸å¯¹äºŽä¸€å¤©çš„æ—¶é—´(11:20)
  * @author Administrator
  *
  */
 public class TimeUtils {
 
-	/**
-	 * »ñÈ¡½ñÈÕÊ±¼äÃëÊý
-	 * @param time "HH:mm:ss"
-	 * @return
-	 */
-	public static long getSecondsFromStrTime(String time) {
-		int minu = 0;
-		
-		String[] tis = time.split(":");
+    /**
+     * èŽ·å–ä»Šæ—¥æ—¶é—´ç§’æ•°
+     * @param time "HH:mm:ss"
+     * @return
+     */
+    public static long getSecondsFromStrTime(String time) {
+        int minu = 0;
 
-		int hour = Integer.parseInt(tis[0]);
-		int minute = Integer.parseInt(tis[1]);
-		
-		int secend = 0;
-		if (tis.length > 2) {
-			secend = Integer.parseInt(tis[2]);
-		}
+        String[] tis = time.split(":");
 
-		
-		minu = hour * 3600 + minute * 60 + secend;
-		
-		return minu;
-	}
-	
-	/**
-	 * »ñÈ¡½ñÈÕÊ±¼äÃëÊý
-	 * @param time "HH:mm:ss"
-	 * @return
-	 */
-	public static long getSecondsFromTime(Date dateTime) {
-		int minu = 0;
-		
-		String time = new SimpleDateFormat("HH:mm:ss").format(dateTime);
-		
-		String[] tis = time.split(":");
+        int hour = Integer.parseInt(tis[0]);
+        int minute = Integer.parseInt(tis[1]);
 
-		int hour = Integer.parseInt(tis[0]);
-		int minute = Integer.parseInt(tis[1]);
-		
-		int secend = 0;
-		if (tis.length > 2) {
-			secend = Integer.parseInt(tis[2]);
-		}
+        int secend = 0;
+        if (tis.length > 2) {
+            secend = Integer.parseInt(tis[2]);
+        }
 
-		
-		minu = hour * 3600 + minute * 60 + secend;
-		
-		return minu;
-	}
-	
-	public static long getHours(long time) {
-		if (time <= 0) {
-			return 0l;
-		}
-		return time / 3600;
-	}
-	
-	public static long getMinutes(long time) {
-		if (time <= 0) {
-			return 0l;
-		}
-		
-		return (time % 3600) / 60;
-	}
-	
-	public static long getSeconds(long time) {
-		if (time <= 0) {
-			return 0;
-		}
-		
-		return time % 60;
-	}
-	
-	public static int getHours(String time) {
-		return (int)getHours(getSecondsFromStrTime(time));
-	}
-	
-	public static int getMinutes(String time) {
-		return (int)getMinutes(getSecondsFromStrTime(time));
-	}
-	
-	public static int getSeconds(String time) {
-		return (int)getSeconds(getSecondsFromStrTime(time));
-	}
-	
-	public static String getStrHours(long time) {
-		long hours = getHours(time);
-		
-		String strHours = "";
-		if (hours < 10) {
-			strHours += "0";
-		}
-		
-		strHours += hours;
-		
-		return strHours;
-	}
-	
-	public static String getStrMinutes(long time) {
-		long minutes = getMinutes(time);
-		
-		String strHours = "";
-		if (minutes < 10) {
-			strHours += "0";
-		}
-		
-		strHours += minutes;
-		
-		return strHours;
-	}
-	
-	public static String getStrSeconds(long time) {
-		long seconds = getSeconds(time);
-		
-		String strHours = "";
-		if (seconds < 10) {
-			strHours += "0";
-		}
-		
-		strHours += seconds;
-		
-		return strHours;
-	}
-	
-	/**
-	 * date1 - date2
-	 * @param date1
-	 * @param date2
-	 * @return
-	 */
-	public static long getIntervalSeconds(Date date1, Date date2) {
-		return getSecondsFromTime(date1) - getSecondsFromTime(date2);
-	}
-	
-	/**
-	 * time1 - time2
-	 * @param time1
-	 * @param time2
-	 * @return
-	 */
-	public static long getIntervalSeconds(String time1, String time2) {
-		return getSecondsFromStrTime(time1) - getSecondsFromStrTime(time2);
-	}
-	
-	/**
-	 * ÒÑ¹ý¶à³¤Ê±¼ä £¨Ãë£©
-	 * µ±Ç°Ê±¼ä - ´«ÈëÊ±¼ä
-	 * @param date
-	 * @return
-	 */
-	public static long getIntervalSeconds(Date date) {
-		return getSecondsFromTime(new Date()) - getSecondsFromTime(date);
-	}
-	
-	/**
-	 * ÒÑ¹ý¶à³¤Ê±¼ä £¨Ãë£©
-	 * µ±Ç°Ê±¼ä - ´«ÈëÊ±¼ä
-	 * @param date
-	 * @return
-	 */
-	public static long getIntervalSeconds(String strTime) {
-		return getSecondsFromTime(new Date()) - getSecondsFromStrTime(strTime);
-	}
-	
-	/**
-	 * Ê£Óà¶àÉÙÊ±¼ä£¨Ãë£©
-	 * ´«ÈëÊ±¼ä - µ±Ç°Ê±¼ä
-	 * @param date
-	 * @return
-	 */
-	public static long getRemainIntervalSeconds(Date date) {
-		return getSecondsFromTime(date) - getSecondsFromTime(new Date());
-	}
-	
-	/**
-	 * Ê£Óà¶àÉÙÊ±¼ä£¨Ãë£©
-	 * ´«ÈëÊ±¼ä - µ±Ç°Ê±¼ä 
-	 * @param date
-	 * @return
-	 */
-	public static long getRemainIntervalSeconds(String strTime) {
-		return getSecondsFromStrTime(strTime) - getSecondsFromTime(new Date());
-	}
-	
-	/**
-	 * ³ýÈ¥Ê±·ÖÃëµÄÓ°Ïì£¬»ñÈ¡Á½¸öÈÕÆÚµÄÏà²îµÄÌìÊý
-	 * data1 - date2
-	 * @param date1
-	 * @param date2
-	 * @return
-	 */
-	public static long getDays(Date date1, Date date2) {
-		Date toDate1 = DateUtils.truncate(date1, Calendar.DAY_OF_MONTH);
-		Date toDate2 = DateUtils.truncate(date2, Calendar.DAY_OF_MONTH);
-		
-		long days = (toDate1.getTime() - toDate2.getTime()) / (24 * 3600 * 1000);
-		
-		return days;
-	}
-	
-	/**
-	 * »ñµÃ½ñÌì£¬²»º¬Ê±·ÖÃë
-	 * @return
-	 */
-	public static Date getToday() {
-		return DateUtils.truncate(new Date(), Calendar.DAY_OF_MONTH);
-	}
-	
-	public static String getTodayStr(String pattern) {
-		return new SimpleDateFormat(pattern).format(getToday());
-	}
-	
-	/**
-	 * »ñµÃÃ÷Ìì£¬²»º¬Ê±·ÖÃë
-	 * @return
-	 */
-	public static Date getTomorrow() {
-		return DateUtils.addDays(getToday(), 1);
-	}
-	
-	public static String getTomorrowStr(String pattern) {
-		return new SimpleDateFormat(pattern).format(getTomorrow());
-	}
-	
-	/**
-	 * »ñµÃ×òÌì
-	 * @return
-	 */
-	public static Date getYesterday() {
-		return DateUtils.addDays(getToday(), -1);
-	}
-	
-	public static String getYesterdayStr(String pattern) {
-		return new SimpleDateFormat(pattern).format(getYesterday());
-	}
+
+        minu = hour * 3600 + minute * 60 + secend;
+
+        return minu;
+    }
+
+    /**
+     * èŽ·å–ä»Šæ—¥æ—¶é—´ç§’æ•°
+     * @param time "HH:mm:ss"
+     * @return
+     */
+    public static long getSecondsFromTime(Date dateTime) {
+        int minu = 0;
+
+        String time = new SimpleDateFormat("HH:mm:ss").format(dateTime);
+
+        String[] tis = time.split(":");
+
+        int hour = Integer.parseInt(tis[0]);
+        int minute = Integer.parseInt(tis[1]);
+
+        int secend = 0;
+        if (tis.length > 2) {
+            secend = Integer.parseInt(tis[2]);
+        }
+
+
+        minu = hour * 3600 + minute * 60 + secend;
+
+        return minu;
+    }
+
+    public static long getHours(long time) {
+        if (time <= 0) {
+            return 0l;
+        }
+        return time / 3600;
+    }
+
+    public static long getMinutes(long time) {
+        if (time <= 0) {
+            return 0l;
+        }
+
+        return (time % 3600) / 60;
+    }
+
+    public static long getSeconds(long time) {
+        if (time <= 0) {
+            return 0;
+        }
+
+        return time % 60;
+    }
+
+    public static int getHours(String time) {
+        return (int)getHours(getSecondsFromStrTime(time));
+    }
+
+    public static int getMinutes(String time) {
+        return (int)getMinutes(getSecondsFromStrTime(time));
+    }
+
+    public static int getSeconds(String time) {
+        return (int)getSeconds(getSecondsFromStrTime(time));
+    }
+
+    public static String getStrHours(long time) {
+        long hours = getHours(time);
+
+        String strHours = "";
+        if (hours < 10) {
+            strHours += "0";
+        }
+
+        strHours += hours;
+
+        return strHours;
+    }
+
+    public static String getStrMinutes(long time) {
+        long minutes = getMinutes(time);
+
+        String strHours = "";
+        if (minutes < 10) {
+            strHours += "0";
+        }
+
+        strHours += minutes;
+
+        return strHours;
+    }
+
+    public static String getStrSeconds(long time) {
+        long seconds = getSeconds(time);
+
+        String strHours = "";
+        if (seconds < 10) {
+            strHours += "0";
+        }
+
+        strHours += seconds;
+
+        return strHours;
+    }
+
+    /**
+     * date1 - date2
+     * @param date1
+     * @param date2
+     * @return
+     */
+    public static long getIntervalSeconds(Date date1, Date date2) {
+        return getSecondsFromTime(date1) - getSecondsFromTime(date2);
+    }
+
+    /**
+     * time1 - time2
+     * @param time1
+     * @param time2
+     * @return
+     */
+    public static long getIntervalSeconds(String time1, String time2) {
+        return getSecondsFromStrTime(time1) - getSecondsFromStrTime(time2);
+    }
+
+    /**
+     * å·²è¿‡å¤šé•¿æ—¶é—´ ï¼ˆç§’ï¼‰
+     * å½“å‰æ—¶é—´ - ä¼ å…¥æ—¶é—´
+     * @param date
+     * @return
+     */
+    public static long getIntervalSeconds(Date date) {
+        return getSecondsFromTime(new Date()) - getSecondsFromTime(date);
+    }
+
+    /**
+     * å·²è¿‡å¤šé•¿æ—¶é—´ ï¼ˆç§’ï¼‰
+     * å½“å‰æ—¶é—´ - ä¼ å…¥æ—¶é—´
+     * @param date
+     * @return
+     */
+    public static long getIntervalSeconds(String strTime) {
+        return getSecondsFromTime(new Date()) - getSecondsFromStrTime(strTime);
+    }
+
+    /**
+     * å‰©ä½™å¤šå°‘æ—¶é—´ï¼ˆç§’ï¼‰
+     * ä¼ å…¥æ—¶é—´ - å½“å‰æ—¶é—´
+     * @param date
+     * @return
+     */
+    public static long getRemainIntervalSeconds(Date date) {
+        return getSecondsFromTime(date) - getSecondsFromTime(new Date());
+    }
+
+    /**
+     * å‰©ä½™å¤šå°‘æ—¶é—´ï¼ˆç§’ï¼‰
+     * ä¼ å…¥æ—¶é—´ - å½“å‰æ—¶é—´
+     * @param date
+     * @return
+     */
+    public static long getRemainIntervalSeconds(String strTime) {
+        return getSecondsFromStrTime(strTime) - getSecondsFromTime(new Date());
+    }
+
+    /**
+     * é™¤åŽ»æ—¶åˆ†ç§’çš„å½±å“ï¼ŒèŽ·å–ä¸¤ä¸ªæ—¥æœŸçš„ç›¸å·®çš„å¤©æ•°
+     * data1 - date2
+     * @param date1
+     * @param date2
+     * @return
+     */
+    public static long getDays(Date date1, Date date2) {
+        Date toDate1 = DateUtils.truncate(date1, Calendar.DAY_OF_MONTH);
+        Date toDate2 = DateUtils.truncate(date2, Calendar.DAY_OF_MONTH);
+
+        long days = (toDate1.getTime() - toDate2.getTime()) / (24 * 3600 * 1000);
+
+        return days;
+    }
+
+    /**
+     * èŽ·å¾—ä»Šå¤©ï¼Œä¸å«æ—¶åˆ†ç§’
+     * @return
+     */
+    public static Date getToday() {
+        return DateUtils.truncate(new Date(), Calendar.DAY_OF_MONTH);
+    }
+
+    public static String getTodayStr(String pattern) {
+        return new SimpleDateFormat(pattern).format(getToday());
+    }
+
+    /**
+     * èŽ·å¾—æ˜Žå¤©ï¼Œä¸å«æ—¶åˆ†ç§’
+     * @return
+     */
+    public static Date getTomorrow() {
+        return DateUtils.addDays(getToday(), 1);
+    }
+
+    public static String getTomorrowStr(String pattern) {
+        return new SimpleDateFormat(pattern).format(getTomorrow());
+    }
+
+    /**
+     * èŽ·å¾—æ˜¨å¤©
+     * @return
+     */
+    public static Date getYesterday() {
+        return DateUtils.addDays(getToday(), -1);
+    }
+
+    public static String getYesterdayStr(String pattern) {
+        return new SimpleDateFormat(pattern).format(getYesterday());
+    }
 }
