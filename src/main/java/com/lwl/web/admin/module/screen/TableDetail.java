@@ -23,7 +23,8 @@ public class TableDetail extends BaseScreen {
     public void execute( @Param("tableName")String tableName,
                          Navigator nav, TurbineRunData rundata, Context context) throws Exception {
 
-        rundata.setLayout("quiRightLayout");
+        //rundata.setLayoutEnabled(false);
+        //rundata.setLayout("quiRightLayout");
 
         TableDO tableDO = tableAO.getTableDO(tableName);
 

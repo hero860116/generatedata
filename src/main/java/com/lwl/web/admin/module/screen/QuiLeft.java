@@ -20,11 +20,11 @@ public class QuiLeft extends BaseScreen {
         TreeNode treeNode1 = new TreeNode(1l, 0l, "数据管理");
         treeNode1.setOpen(true);
 
-        TreeNode treeNode11 = new TreeNode(1l, "批量数据自动生成", getTurbineURIBroker("adminModule").setTarget("index.vm").render(), "frmright");
+        TreeNode treeNode11 = new TreeNode(1l, "用户表", getTurbineURIBroker("adminModule").setTarget("tableDetail.vm").addQueryData("tableName", "t_user").render(), "frmright");
         treeNodes.add(treeNode1);
         treeNodes.add(treeNode11);
 
-        TreeNode treeNode12 = new TreeNode(1l, "批量数据自动生成2", getTurbineURIBroker("adminModule").setTarget("index.vm").render(), "frmright");
+        TreeNode treeNode12 = new TreeNode(1l, "订单表", getTurbineURIBroker("adminModule").setTarget("tableDetail.vm").addQueryData("tableName", "t_order").render(), "frmright");
         treeNodes.add(treeNode12);
         context.put("treeNodesJson", new Gson().toJson(treeNodes));
     }
