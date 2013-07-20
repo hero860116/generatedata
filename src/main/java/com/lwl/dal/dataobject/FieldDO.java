@@ -1,5 +1,10 @@
 package com.lwl.dal.dataobject;
 
+import com.lwl.biz.manager.FieldGenerator;
+import com.lwl.dal.emum.FieldGenerationType;
+
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Administrator
@@ -12,6 +17,21 @@ public class FieldDO extends BaseDO{
     private String comment;
     private String type;
     private Integer generationType;
+    private Long min;
+    private Long max;
+    private String startValue;
+
+    public String generationValue(List<FieldGenerator> fieldGenerators) {
+        String value = null;
+        for (FieldGenerator fieldGenerator : fieldGenerators) {
+            if (fieldGenerator.getFieldGenerationType().getType().equals(getGenerationType())) {
+                value = fieldGenerator.generator(name, startValue);
+                break;
+            }
+        }
+
+        return value;
+    }
 
     public String getName() {
         return name;
